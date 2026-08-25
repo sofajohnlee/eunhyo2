@@ -9,7 +9,9 @@ class MathStudyViewModel : ViewModel() {
     data class UiState(
         val operation: MathOperation = MathOperation.ADD,
         val difficulty: MathDifficulty = MathDifficulty.INTERMEDIATE,
-        val problem: MathProblem = MathProblemGenerator().generate(
+        val numberMode: NumberMode = NumberMode.NATURAL,
+        val exercise: MathExercise = AdvancedMathProblemGenerator().generate(
+            NumberMode.NATURAL,
             MathOperation.ADD,
             MathDifficulty.INTERMEDIATE,
         ),
@@ -17,40 +19,30 @@ class MathStudyViewModel : ViewModel() {
         val feedback: String = "",
         val correctCount: Int = 0,
         val attemptCount: Int = 0,
-    )
+    ) {
+        val scoreLabel: String get() = "$correctCount / $attemptCount"
+    }
 
-    private val generator = MathProblemGenerator()
+    private val generator = AdvancedMathProblemGenerator()
     private val _uiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
-    fun selectOperation(operation: MathOperation) {
-        val state = _uiState.value
-        _uiState.value = state.copy(
-            operation = operation,
-            problem = generator.generate(operation, state.difficulty),
-            input = "",
-            feedback = "",
-        )
-    }
+    fun selectOperation(operation: MathOperation) = regenerate(operation = operation)
 
-    fun selectDifficulty(difficulty: MathDifficulty) {
-        val state = _uiState.value
-        _uiState.value = state.copy(
-            difficulty = difficulty,
-            problem = generator.generate(state.operation, difficulty),
-            input = "",
-            feedback = "",
-        )
-    }
+    fun selectDifficulty(difficulty: MathDifficulty) = regenerate(difficulty = difficulty)
+
+    fun selectNumberMode(numberMode: NumberMode) = regenerate(numberMode = numberMode)
 
     fun updateInput(value: String) {
-        _uiState.value = _uiState.value.copy(input = value.filter { it.isDigit() || it == '-' })
+        _uiState.value = _uiState.value.copy(
+            input = value.filter { it.isDigit() || it == '-' || it == '.' || it == '/' },
+        )
     }
 
     fun submit() {
         val state = _uiState.value
-        val answer = state.input.toIntOrNull()
-        val correct = answer == state.problem.answer
+        if (state.input.isBlank()) return
+        val correct = state.exercise.matches(state.input)
         _uiState.value = state.copy(
             feedback = if (correct) "정답입니다." else "다시 생각해 보세요.",
             correctCount = state.correctCount + if (correct) 1 else 0,
@@ -58,10 +50,19 @@ class MathStudyViewModel : ViewModel() {
         )
     }
 
-    fun next() {
+    fun next() = regenerate()
+
+    private fun regenerate(
+        operation: MathOperation = _uiState.value.operation,
+        difficulty: MathDifficulty = _uiState.value.difficulty,
+        numberMode: NumberMode = _uiState.value.numberMode,
+    ) {
         val state = _uiState.value
         _uiState.value = state.copy(
-            problem = generator.generate(state.operation, state.difficulty),
+            operation = operation,
+            difficulty = difficulty,
+            numberMode = numberMode,
+            exercise = generator.generate(numberMode, operation, difficulty),
             input = "",
             feedback = "",
         )
