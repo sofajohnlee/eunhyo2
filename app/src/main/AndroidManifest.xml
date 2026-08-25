@@ -9,6 +9,10 @@
         android:theme="@style/Theme.Eunhyo2">
 
         <activity
+            android:name=".feature.game.BoardGameScoreActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".feature.school.SchoolMenuActivity"
             android:exported="false" />
 
