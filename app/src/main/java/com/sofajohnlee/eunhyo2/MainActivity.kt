@@ -14,6 +14,7 @@ import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
 import com.sofajohnlee.eunhyo2.feature.math.MathStudyActivity
 import com.sofajohnlee.eunhyo2.feature.school.SchoolLevel
 import com.sofajohnlee.eunhyo2.feature.school.SchoolMenuActivity
+import com.sofajohnlee.eunhyo2.feature.settings.SettingsActivity
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding.buttonKoreanStudy.setOnClickListener { startActivity(Intent(this, KoreanStudyActivity::class.java)) }
         binding.buttonMathStudy.setOnClickListener { startActivity(Intent(this, MathStudyActivity::class.java)) }
         binding.buttonHanjaStudy.setOnClickListener { startActivity(Intent(this, HanjaStudyActivity::class.java)) }
+        binding.buttonSettings.setOnClickListener { startActivity(Intent(this, SettingsActivity::class.java)) }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
