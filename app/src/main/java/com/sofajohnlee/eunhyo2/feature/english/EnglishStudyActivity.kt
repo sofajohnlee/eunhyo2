@@ -7,8 +7,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.sofajohnlee.eunhyo2.databinding.ActivityEnglishStudyBinding
-import com.sofajohnlee.eunhyo2.core.model.StudyLanguage
-import com.sofajohnlee.eunhyo2.core.speech.SpeechController
+import com.sofajohnlee.eunhyo2.domain.model.StudyLanguage
+import com.sofajohnlee.eunhyo2.speech.SpeechController
 import kotlinx.coroutines.launch
 
 class EnglishStudyActivity : AppCompatActivity() {
@@ -28,23 +28,26 @@ class EnglishStudyActivity : AppCompatActivity() {
         binding.buttonJapanese.setOnClickListener { viewModel.selectLanguage(StudyLanguage.JAPANESE) }
         binding.buttonItalian.setOnClickListener { viewModel.selectLanguage(StudyLanguage.ITALIAN) }
         binding.buttonNext.setOnClickListener { viewModel.next() }
-        binding.buttonSpeak.setOnClickListener { speechController.speak(viewModel.uiState.value.card.term, viewModel.uiState.value.language.locale) }
+        binding.buttonSpeak.setOnClickListener {
+            val state = viewModel.uiState.value
+            speechController.speak(state.card.speechText, state.language)
+        }
         binding.checkShowImage.setOnCheckedChangeListener { _, checked -> viewModel.setShowImage(checked) }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { state ->
-                    binding.textSymbol.text = state.card.symbol
-                    binding.textTerm.text = state.card.term
-                    binding.textHint.text = state.card.hint.orEmpty()
-                    binding.textImageStatus.text = if (state.showImage) state.card.imageKey.orEmpty() else ""
+                    binding.textSymbol.text = state.card.primaryText
+                    binding.textTerm.text = state.card.secondaryText
+                    binding.textHint.text = state.card.speechText
+                    binding.textImageStatus.text = if (state.showImage) state.card.imageResourceName.orEmpty() else ""
                 }
             }
         }
     }
 
     override fun onDestroy() {
-        speechController.close()
+        speechController.shutdown()
         super.onDestroy()
     }
 }
