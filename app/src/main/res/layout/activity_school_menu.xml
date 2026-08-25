@@ -30,6 +30,8 @@
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonLinks" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="교육 사이트" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonMedia" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="미디어 학습" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonSports" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="스포츠 학습" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonMagic" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="마술 영상" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonGoldenBell" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="골든벨 O/X" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonAi" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="AI 학습 도우미" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonGame" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="게임·점수" />
     </LinearLayout>
