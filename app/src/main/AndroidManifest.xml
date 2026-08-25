@@ -8,6 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eunhyo2">
 
+        <activity android:name=".feature.korean.KoreanPronunciationActivity" android:exported="false" />
         <activity android:name=".feature.koreanbook.KoreanBookActivity" android:exported="false" />
         <activity android:name=".feature.korean.KoreanSpellingActivity" android:exported="false" />
         <activity android:name=".feature.korean.KoreanIdiomActivity" android:exported="false" />
