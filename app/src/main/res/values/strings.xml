@@ -5,4 +5,15 @@
     <string name="elementary">초등학교</string>
     <string name="middle">중학교</string>
     <string name="high">고등학교</string>
+    <string name="english_study">영어 학습</string>
+    <string name="korean_study">한글 학습</string>
+    <string name="math_study">수학 학습</string>
+    <string name="show_image">그림 보기</string>
+    <string name="show_drawing_guide">쓰기 연습 안내</string>
+    <string name="previous">이전</string>
+    <string name="next">다음</string>
+    <string name="speak">듣기</string>
+    <string name="image_pending">그림 자료 이전 예정</string>
+    <string name="drawing_guide_enabled">쓰기 연습 기능 사용</string>
+    <string name="drawing_guide_disabled">쓰기 연습 기능 숨김</string>
 </resources>
