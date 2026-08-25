@@ -4,11 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sofajohnlee.eunhyo2.databinding.ActivitySchoolMenuBinding
+import com.sofajohnlee.eunhyo2.feature.ai.AiChatActivity
 import com.sofajohnlee.eunhyo2.feature.english.EnglishStudyActivity
 import com.sofajohnlee.eunhyo2.feature.game.BoardGameScoreActivity
 import com.sofajohnlee.eunhyo2.feature.hanja.HanjaStudyActivity
+import com.sofajohnlee.eunhyo2.feature.history.HistoryStudyActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
 import com.sofajohnlee.eunhyo2.feature.math.MathStudyActivity
+import com.sofajohnlee.eunhyo2.feature.media.MediaLibraryActivity
 
 class SchoolMenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySchoolMenuBinding
@@ -27,6 +30,9 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonEnglish.setOnClickListener { open(EnglishStudyActivity::class.java) }
         binding.buttonMath.setOnClickListener { open(MathStudyActivity::class.java) }
         binding.buttonHanja.setOnClickListener { open(HanjaStudyActivity::class.java) }
+        binding.buttonHistory.setOnClickListener { open(HistoryStudyActivity::class.java) }
+        binding.buttonMedia.setOnClickListener { open(MediaLibraryActivity::class.java) }
+        binding.buttonAi.setOnClickListener { open(AiChatActivity::class.java) }
         binding.buttonGame.setOnClickListener { open(BoardGameScoreActivity::class.java) }
     }
 
