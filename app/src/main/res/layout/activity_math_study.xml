@@ -17,6 +17,13 @@
             android:text="0 / 0" />
 
         <TextView
+            android:id="@+id/textMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+
+        <TextView
             android:id="@+id/textProblem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,10 +47,17 @@
             android:layout_marginTop="12dp"
             android:gravity="center" />
 
-        <LinearLayout
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonMixed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:text="혼합연산 퀴즈" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
@@ -151,5 +165,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/next" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonResetScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="점수 초기화" />
     </LinearLayout>
 </ScrollView>
