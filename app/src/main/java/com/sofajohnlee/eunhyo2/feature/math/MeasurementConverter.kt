@@ -9,6 +9,15 @@ object MeasurementConverter {
     fun minutesToHoursAndMinutes(minutes: Int): Pair<Int, Int> =
         minutes / 60 to minutes % 60
 
+    fun daysToHours(days: Int): Int = days * 24
+    fun hoursToDaysAndHours(hours: Int): Pair<Int, Int> = hours / 24 to hours % 24
+
+    fun weeksToDays(weeks: Int): Int = weeks * 7
+    fun daysToWeeksAndDays(days: Int): Pair<Int, Int> = days / 7 to days % 7
+
+    fun yearsToMonths(years: Int): Int = years * 12
+    fun monthsToYearsAndMonths(months: Int): Pair<Int, Int> = months / 12 to months % 12
+
     fun addLength(meters1: Int, centimeters1: Int, meters2: Int, centimeters2: Int): Pair<Int, Int> =
         centimetersToMetersAndCentimeters(
             metersToCentimeters(meters1) + centimeters1 + metersToCentimeters(meters2) + centimeters2,
