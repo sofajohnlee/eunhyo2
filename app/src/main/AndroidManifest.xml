@@ -9,6 +9,10 @@
         android:theme="@style/Theme.Eunhyo2">
 
         <activity
+            android:name=".feature.korean.KoreanStudyActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".feature.english.EnglishStudyActivity"
             android:exported="false" />
 
