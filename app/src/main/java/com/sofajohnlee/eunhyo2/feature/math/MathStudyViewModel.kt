@@ -8,9 +8,15 @@ import kotlinx.coroutines.flow.asStateFlow
 class MathStudyViewModel : ViewModel() {
     data class UiState(
         val operation: MathOperation = MathOperation.ADD,
-        val problem: MathProblem = MathProblemGenerator().generate(MathOperation.ADD),
+        val difficulty: MathDifficulty = MathDifficulty.INTERMEDIATE,
+        val problem: MathProblem = MathProblemGenerator().generate(
+            MathOperation.ADD,
+            MathDifficulty.INTERMEDIATE,
+        ),
         val input: String = "",
         val feedback: String = "",
+        val correctCount: Int = 0,
+        val attemptCount: Int = 0,
     )
 
     private val generator = MathProblemGenerator()
@@ -18,7 +24,23 @@ class MathStudyViewModel : ViewModel() {
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
     fun selectOperation(operation: MathOperation) {
-        _uiState.value = UiState(operation = operation, problem = generator.generate(operation))
+        val state = _uiState.value
+        _uiState.value = state.copy(
+            operation = operation,
+            problem = generator.generate(operation, state.difficulty),
+            input = "",
+            feedback = "",
+        )
+    }
+
+    fun selectDifficulty(difficulty: MathDifficulty) {
+        val state = _uiState.value
+        _uiState.value = state.copy(
+            difficulty = difficulty,
+            problem = generator.generate(state.operation, difficulty),
+            input = "",
+            feedback = "",
+        )
     }
 
     fun updateInput(value: String) {
@@ -26,13 +48,22 @@ class MathStudyViewModel : ViewModel() {
     }
 
     fun submit() {
-        val answer = _uiState.value.input.toIntOrNull()
-        val correct = answer == _uiState.value.problem.answer
-        _uiState.value = _uiState.value.copy(feedback = if (correct) "정답입니다." else "다시 생각해 보세요.")
+        val state = _uiState.value
+        val answer = state.input.toIntOrNull()
+        val correct = answer == state.problem.answer
+        _uiState.value = state.copy(
+            feedback = if (correct) "정답입니다." else "다시 생각해 보세요.",
+            correctCount = state.correctCount + if (correct) 1 else 0,
+            attemptCount = state.attemptCount + 1,
+        )
     }
 
     fun next() {
-        val operation = _uiState.value.operation
-        _uiState.value = UiState(operation = operation, problem = generator.generate(operation))
+        val state = _uiState.value
+        _uiState.value = state.copy(
+            problem = generator.generate(state.operation, state.difficulty),
+            input = "",
+            feedback = "",
+        )
     }
 }
