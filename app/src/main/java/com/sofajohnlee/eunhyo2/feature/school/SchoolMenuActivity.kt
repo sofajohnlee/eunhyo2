@@ -1,0 +1,44 @@
+package com.sofajohnlee.eunhyo2.feature.school
+
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.sofajohnlee.eunhyo2.databinding.ActivitySchoolMenuBinding
+import com.sofajohnlee.eunhyo2.feature.english.EnglishStudyActivity
+import com.sofajohnlee.eunhyo2.feature.hanja.HanjaStudyActivity
+import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
+import com.sofajohnlee.eunhyo2.feature.math.MathStudyActivity
+
+class SchoolMenuActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySchoolMenuBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivitySchoolMenuBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val level = intent.getStringExtra(EXTRA_LEVEL)
+            ?.let { runCatching { SchoolLevel.valueOf(it) }.getOrNull() }
+            ?: SchoolLevel.ELEMENTARY
+        binding.textSchoolLevel.text = level.label
+
+        binding.buttonKorean.setOnClickListener { open(KoreanStudyActivity::class.java) }
+        binding.buttonEnglish.setOnClickListener { open(EnglishStudyActivity::class.java) }
+        binding.buttonMath.setOnClickListener { open(MathStudyActivity::class.java) }
+        binding.buttonHanja.setOnClickListener { open(HanjaStudyActivity::class.java) }
+    }
+
+    private fun open(target: Class<out AppCompatActivity>) {
+        startActivity(Intent(this, target))
+    }
+
+    companion object {
+        const val EXTRA_LEVEL = "school_level"
+    }
+}
+
+enum class SchoolLevel(val label: String) {
+    ELEMENTARY("초등학교"),
+    MIDDLE("중학교"),
+    HIGH("고등학교"),
+}
