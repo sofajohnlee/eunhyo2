@@ -1,5 +1,6 @@
 package com.sofajohnlee.eunhyo2.feature.koreanbook
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +26,11 @@ class KoreanBookActivity : AppCompatActivity() {
         binding.buttonMoving.setOnClickListener { viewModel.setPlot(StoryPlot.MOVING) }
         binding.buttonKoreanLanguage.setOnClickListener { viewModel.setLanguage(StoryLanguage.KOREAN) }
         binding.buttonEnglishLanguage.setOnClickListener { viewModel.setLanguage(StoryLanguage.ENGLISH) }
+        binding.buttonEditStory.setOnClickListener {
+            startActivity(Intent(this, KoreanBookEditorActivity::class.java).apply {
+                putExtra(KoreanBookEditorActivity.EXTRA_TEXT, binding.textBookStory.text.toString())
+            })
+        }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
