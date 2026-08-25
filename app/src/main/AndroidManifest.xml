@@ -8,6 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eunhyo2">
 
+        <activity android:name=".feature.english.EnglishSentenceImportActivity" android:exported="false" />
         <activity android:name=".feature.about.AboutActivity" android:exported="false" />
         <activity android:name=".feature.sports.SportsActivity" android:exported="false" />
         <activity android:name=".feature.settings.SettingsActivity" android:exported="false" />
