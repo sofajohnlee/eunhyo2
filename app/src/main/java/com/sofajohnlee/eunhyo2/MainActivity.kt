@@ -8,6 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.sofajohnlee.eunhyo2.databinding.ActivityMainBinding
+import com.sofajohnlee.eunhyo2.feature.about.AboutActivity
 import com.sofajohnlee.eunhyo2.feature.english.EnglishStudyActivity
 import com.sofajohnlee.eunhyo2.feature.hanja.HanjaStudyActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         binding.buttonMathStudy.setOnClickListener { startActivity(Intent(this, MathStudyActivity::class.java)) }
         binding.buttonHanjaStudy.setOnClickListener { startActivity(Intent(this, HanjaStudyActivity::class.java)) }
         binding.buttonSettings.setOnClickListener { startActivity(Intent(this, SettingsActivity::class.java)) }
+        binding.buttonAbout.setOnClickListener { startActivity(Intent(this, AboutActivity::class.java)) }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
