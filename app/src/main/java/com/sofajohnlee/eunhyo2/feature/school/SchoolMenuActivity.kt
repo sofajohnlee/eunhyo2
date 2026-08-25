@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sofajohnlee.eunhyo2.databinding.ActivitySchoolMenuBinding
 import com.sofajohnlee.eunhyo2.feature.ai.AiChatActivity
 import com.sofajohnlee.eunhyo2.feature.clock.ClockStudyActivity
+import com.sofajohnlee.eunhyo2.feature.drawing.DrawingPracticeActivity
 import com.sofajohnlee.eunhyo2.feature.english.EnglishStudyActivity
 import com.sofajohnlee.eunhyo2.feature.game.BoardGameScoreActivity
 import com.sofajohnlee.eunhyo2.feature.hanja.HanjaStudyActivity
 import com.sofajohnlee.eunhyo2.feature.history.HistoryStudyActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
+import com.sofajohnlee.eunhyo2.feature.links.EducationLinksActivity
 import com.sofajohnlee.eunhyo2.feature.math.MathStudyActivity
 import com.sofajohnlee.eunhyo2.feature.media.MediaLibraryActivity
 
@@ -33,6 +35,8 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonHanja.setOnClickListener { open(HanjaStudyActivity::class.java) }
         binding.buttonHistory.setOnClickListener { open(HistoryStudyActivity::class.java) }
         binding.buttonClock.setOnClickListener { open(ClockStudyActivity::class.java) }
+        binding.buttonDrawing.setOnClickListener { open(DrawingPracticeActivity::class.java) }
+        binding.buttonLinks.setOnClickListener { open(EducationLinksActivity::class.java) }
         binding.buttonMedia.setOnClickListener { open(MediaLibraryActivity::class.java) }
         binding.buttonAi.setOnClickListener { open(AiChatActivity::class.java) }
         binding.buttonGame.setOnClickListener { open(BoardGameScoreActivity::class.java) }
