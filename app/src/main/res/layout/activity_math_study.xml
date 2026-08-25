@@ -10,11 +10,19 @@
         android:padding="24dp">
 
         <TextView
+            android:id="@+id/textScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="0 / 0" />
+
+        <TextView
             android:id="@+id/textProblem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:gravity="center"
-            android:textSize="48sp"
+            android:textSize="42sp"
             android:textStyle="bold" />
 
         <EditText
@@ -22,8 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="정답"
-            android:inputType="numberSigned" />
+            android:hint="정답 (분수는 1/2 형식)"
+            android:inputType="text" />
 
         <TextView
             android:id="@+id/textFeedback"
@@ -35,7 +43,67 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonNatural"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="자연수" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonDecimal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:text="소수" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonFraction"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:text="분수" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonBeginner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="초급" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonIntermediate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:text="중급" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonAdvanced"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:text="고급" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
@@ -49,24 +117,24 @@
                 android:id="@+id/buttonSubtract"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="6dp"
+                android:layout_weight="1"
                 android:text="−" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonMultiply"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="6dp"
+                android:layout_weight="1"
                 android:text="×" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonDivide"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="6dp"
+                android:layout_weight="1"
                 android:text="÷" />
         </LinearLayout>
 
