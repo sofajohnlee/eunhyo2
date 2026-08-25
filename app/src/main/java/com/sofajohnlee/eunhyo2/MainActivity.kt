@@ -10,6 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.sofajohnlee.eunhyo2.databinding.ActivityMainBinding
 import com.sofajohnlee.eunhyo2.feature.english.EnglishStudyActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
+import com.sofajohnlee.eunhyo2.feature.math.MathStudyActivity
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.buttonKoreanStudy.setOnClickListener {
             startActivity(Intent(this, KoreanStudyActivity::class.java))
+        }
+        binding.buttonMathStudy.setOnClickListener {
+            startActivity(Intent(this, MathStudyActivity::class.java))
         }
 
         lifecycleScope.launch {
