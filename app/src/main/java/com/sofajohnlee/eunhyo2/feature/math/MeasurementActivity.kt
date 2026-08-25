@@ -12,24 +12,31 @@ class MeasurementActivity : AppCompatActivity() {
         binding = ActivityMeasurementBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonMetersToCm.setOnClickListener {
-            val value = input() ?: return@setOnClickListener
-            binding.textResult.text = "${MeasurementConverter.metersToCentimeters(value)} cm"
-        }
+        binding.buttonMetersToCm.setOnClickListener { unary { "${MeasurementConverter.metersToCentimeters(it)} cm" } }
         binding.buttonCmToMeters.setOnClickListener {
-            val value = input() ?: return@setOnClickListener
-            val (m, cm) = MeasurementConverter.centimetersToMetersAndCentimeters(value)
-            binding.textResult.text = "${m} m ${cm} cm"
+            unary { value -> MeasurementConverter.centimetersToMetersAndCentimeters(value).let { (m, cm) -> "${m} m ${cm} cm" } }
         }
-        binding.buttonHoursToMinutes.setOnClickListener {
-            val value = input() ?: return@setOnClickListener
-            binding.textResult.text = "${MeasurementConverter.hoursToMinutes(value)} 분"
-        }
+        binding.buttonHoursToMinutes.setOnClickListener { unary { "${MeasurementConverter.hoursToMinutes(it)} 분" } }
         binding.buttonMinutesToHours.setOnClickListener {
-            val value = input() ?: return@setOnClickListener
-            val (h, min) = MeasurementConverter.minutesToHoursAndMinutes(value)
-            binding.textResult.text = "${h}시간 ${min}분"
+            unary { value -> MeasurementConverter.minutesToHoursAndMinutes(value).let { (h, min) -> "${h}시간 ${min}분" } }
         }
+        binding.buttonDaysToHours.setOnClickListener { unary { "${MeasurementConverter.daysToHours(it)} 시간" } }
+        binding.buttonHoursToDays.setOnClickListener {
+            unary { value -> MeasurementConverter.hoursToDaysAndHours(value).let { (d, h) -> "${d}일 ${h}시간" } }
+        }
+        binding.buttonWeeksToDays.setOnClickListener { unary { "${MeasurementConverter.weeksToDays(it)} 일" } }
+        binding.buttonDaysToWeeks.setOnClickListener {
+            unary { value -> MeasurementConverter.daysToWeeksAndDays(value).let { (w, d) -> "${w}주 ${d}일" } }
+        }
+        binding.buttonYearsToMonths.setOnClickListener { unary { "${MeasurementConverter.yearsToMonths(it)} 개월" } }
+        binding.buttonMonthsToYears.setOnClickListener {
+            unary { value -> MeasurementConverter.monthsToYearsAndMonths(value).let { (y, m) -> "${y}년 ${m}개월" } }
+        }
+    }
+
+    private fun unary(transform: (Int) -> String) {
+        val value = input() ?: return
+        binding.textResult.text = transform(value)
     }
 
     private fun input(): Int? {
