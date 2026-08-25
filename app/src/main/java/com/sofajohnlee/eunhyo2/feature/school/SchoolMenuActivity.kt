@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sofajohnlee.eunhyo2.databinding.ActivitySchoolMenuBinding
 import com.sofajohnlee.eunhyo2.feature.english.EnglishStudyActivity
+import com.sofajohnlee.eunhyo2.feature.game.BoardGameScoreActivity
 import com.sofajohnlee.eunhyo2.feature.hanja.HanjaStudyActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
 import com.sofajohnlee.eunhyo2.feature.math.MathStudyActivity
@@ -26,6 +27,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonEnglish.setOnClickListener { open(EnglishStudyActivity::class.java) }
         binding.buttonMath.setOnClickListener { open(MathStudyActivity::class.java) }
         binding.buttonHanja.setOnClickListener { open(HanjaStudyActivity::class.java) }
+        binding.buttonGame.setOnClickListener { open(BoardGameScoreActivity::class.java) }
     }
 
     private fun open(target: Class<out AppCompatActivity>) {
