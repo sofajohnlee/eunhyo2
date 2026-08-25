@@ -8,6 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eunhyo2">
 
+        <activity android:name=".feature.personality.PersonalityQuizActivity" android:exported="false" />
         <activity android:name=".feature.magic.MagicActivity" android:exported="false" />
         <activity android:name=".feature.goldenbell.GoldenBellActivity" android:exported="false" />
         <activity android:name=".feature.math.MathStateActivity" android:exported="false" />
