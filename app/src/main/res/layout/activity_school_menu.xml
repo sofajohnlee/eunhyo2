@@ -32,6 +32,7 @@
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonSports" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="스포츠 학습" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonMagic" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="마술 영상" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonGoldenBell" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="골든벨 O/X" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonPersonality" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="놀이형 성향 테스트" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonAi" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="AI 학습 도우미" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonGame" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="게임·점수" />
     </LinearLayout>
