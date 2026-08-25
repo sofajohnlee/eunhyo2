@@ -24,6 +24,7 @@
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonGeometry" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="기하 도형" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonGraph" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="그래프 도구" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonHanja" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="한자" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonHanjaRadical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="한자 부수" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonHistory" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="역사" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonWorld" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="세계 국가 학습" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonClock" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="시계 학습" />
