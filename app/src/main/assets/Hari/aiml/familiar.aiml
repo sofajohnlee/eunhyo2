@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: familiar.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: February 20, 2013 -->
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2013 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<category><pattern>ASK FAMILIAR CONTACTNAME</pattern>
+<template><think><set name="topic">ASKING FAMILIAR CONTACTNAME</set></think>
+What is your <lowercase><get name="familiarpredicate"/></lowercase>'s name?</template>
+</category>
+<topic name="ASKING FAMILIAR CONTACTNAME">
+<category><pattern>_</pattern><that>WHAT IS YOUR * S NAME</that>
+<template><think>
+<set name="topic">unknown</set>
+<set name="contactname"><star/></set>
+<set name="contactdest"><star/></set>
+<set name="isshortanswer"><srai>ISSHORTANSWER <star/></srai></set>
+</think>
+<condition name="isshortanswer">
+<li value="true">
+<srai>REMEMBERFAMILIARNAME</srai>
+<srai>RESUMEACTION <get name="modecom"/></srai>
+</li>
+<li><srai>CONTACTFINALIZE</srai> <srai><star/></srai></li>
+</condition></template>
+</category></topic>
+<category><pattern>MY <SET>FAMILIARNAME</SET> S NAME IS *</pattern>
+<template><think><set name="familiarpredicate"><srai>FAMILIARPREDICATE <star/></srai></set><set name="contactname"><star index="2"/></set></think><srai>REMEMBERFAMILIARNAME</srai></template>
+</category>
+<category><pattern>FAMILIARPREDICATE MOM</pattern><template>mother</template></category>
+<category><pattern>FAMILIARPREDICATE DAD</pattern><template>father</template></category>
+<category><pattern>FAMILIARPREDICATE MOTHER</pattern><template>mother</template></category>
+<category><pattern>FAMILIARPREDICATE FATHER</pattern><template>father</template></category>
+<category><pattern>FAMILIARPREDICATE BROTHER</pattern><template>brother</template></category>
+<category><pattern>FAMILIARPREDICATE SISTER</pattern><template>sister</template></category>
+<category><pattern>FAMILIARPREDICATE SON</pattern><template>son</template></category>
+<category><pattern>FAMILIARPREDICATE DAUGHTER</pattern><template>daughter</template></category>
+<category><pattern>FAMILIARPREDICATE HUSBAND</pattern><template>husband</template></category>
+<category><pattern>FAMILIARPREDICATE WIFE</pattern><template>wife</template></category>
+<category><pattern>FAMILIARPREDICATE *</pattern><template>unknown</template></category>
+<category><pattern>REMEMBERFAMILIARNAME</pattern><template>I will remember your <lowercase><get name="familiarpredicate"/></lowercase>'s name is <get name="contactname"/>.</template></category>
+</aiml>
