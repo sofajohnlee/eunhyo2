@@ -23,60 +23,14 @@
             android:layout_marginTop="16dp"
             android:text="@string/select_grade" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonElementary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/elementary" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonMiddle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/middle" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonHigh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/high" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonEnglishStudy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/english_study" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonKoreanStudy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/korean_study" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonMathStudy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/math_study" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonHanjaStudy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="한자 학습" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonSettings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="환경 설정" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonElementary" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="@string/elementary" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonMiddle" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/middle" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonHigh" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/high" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonEnglishStudy" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="@string/english_study" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonKoreanStudy" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/korean_study" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonMathStudy" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/math_study" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonHanjaStudy" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="한자 학습" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonSettings" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="환경 설정" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonAbout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="앱 정보" />
     </LinearLayout>
 </ScrollView>
