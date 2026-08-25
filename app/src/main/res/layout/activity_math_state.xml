@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="수학 상태 설정"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
+
+    <TextView
+        android:id="@+id/textCurrentState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+    <com.google.android.material.button.MaterialButton android:id="@+id/buttonState0" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="상태 0 (기본)" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/buttonState1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="상태 1" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/buttonState2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="상태 2" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/buttonState3" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="상태 3" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/buttonState4" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="상태 4" />
+</LinearLayout>
