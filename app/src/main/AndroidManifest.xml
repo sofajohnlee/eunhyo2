@@ -8,6 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eunhyo2">
 
+        <activity android:name=".feature.math.MathStateActivity" android:exported="false" />
         <activity android:name=".feature.koreanbook.KoreanBookEditorActivity" android:exported="false" />
         <activity android:name=".feature.korean.KoreanPronunciationActivity" android:exported="false" />
         <activity android:name=".feature.koreanbook.KoreanBookActivity" android:exported="false" />
@@ -34,9 +35,7 @@
         <activity android:name=".feature.korean.KoreanStudyActivity" android:exported="false" />
         <activity android:name=".feature.english.EnglishStudyActivity" android:exported="false" />
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+        <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
