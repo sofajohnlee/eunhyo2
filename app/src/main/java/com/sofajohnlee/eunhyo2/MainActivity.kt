@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.sofajohnlee.eunhyo2.databinding.ActivityMainBinding
 import com.sofajohnlee.eunhyo2.feature.english.EnglishStudyActivity
+import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
         binding.buttonHigh.setOnClickListener { viewModel.selectGrade(GradeLevel.HIGH) }
         binding.buttonEnglishStudy.setOnClickListener {
             startActivity(Intent(this, EnglishStudyActivity::class.java))
+        }
+        binding.buttonKoreanStudy.setOnClickListener {
+            startActivity(Intent(this, KoreanStudyActivity::class.java))
         }
 
         lifecycleScope.launch {
