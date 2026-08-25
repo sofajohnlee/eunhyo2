@@ -13,7 +13,7 @@ class AdvancedMathProblemGenerator(
     }
 
     private fun natural(operation: MathOperation, difficulty: MathDifficulty): MathExercise {
-        val problem = MathProblemGenerator(random).generate(operation, difficulty.maxNatural)
+        val problem = MathProblemGenerator(random).generate(operation, difficulty)
         return MathExercise(problem.expression, problem.answer.toString())
     }
 
@@ -24,18 +24,15 @@ class AdvancedMathProblemGenerator(
             MathDifficulty.INTERMEDIATE -> 1000
             MathDifficulty.ADVANCED -> 10000
         }
-        val leftRaw = random.nextInt(1, bound)
-        val rightRaw = random.nextInt(1, bound)
         val divisor = BigDecimal.TEN.pow(scale)
-        val left = BigDecimal(leftRaw).divide(divisor)
-        val right = BigDecimal(rightRaw).divide(divisor)
+        val left = BigDecimal(random.nextInt(1, bound)).divide(divisor)
+        val right = BigDecimal(random.nextInt(1, bound)).divide(divisor)
         val (a, b) = if (operation == MathOperation.SUBTRACT && left < right) right to left else left to right
         val answer = when (operation) {
             MathOperation.ADD -> a + b
             MathOperation.SUBTRACT -> a - b
             MathOperation.MULTIPLY -> a * b
             MathOperation.DIVIDE -> {
-                // Generate an exact decimal quotient to avoid repeating-decimal ambiguity.
                 val q = BigDecimal(random.nextInt(1, 20))
                 val d = BigDecimal(random.nextInt(1, 20))
                 return MathExercise("${q * d} ÷ $d", q.stripTrailingZeros().toPlainString())
@@ -59,14 +56,14 @@ class AdvancedMathProblemGenerator(
                 if (result.numerator >= 0) MathExercise("$a − $b", result.toString())
                 else MathExercise("$b − $a", (b - a).toString())
             }
-            MathOperation.MULTIPLY -> {
-                val result = Fraction.of(a.numerator * b.numerator, a.denominator * b.denominator)
-                MathExercise("$a × $b", result.toString())
-            }
-            MathOperation.DIVIDE -> {
-                val result = Fraction.of(a.numerator * b.denominator, a.denominator * b.numerator)
-                MathExercise("$a ÷ $b", result.toString())
-            }
+            MathOperation.MULTIPLY -> MathExercise(
+                "$a × $b",
+                Fraction.of(a.numerator * b.numerator, a.denominator * b.denominator).toString(),
+            )
+            MathOperation.DIVIDE -> MathExercise(
+                "$a ÷ $b",
+                Fraction.of(a.numerator * b.denominator, a.denominator * b.numerator).toString(),
+            )
         }
     }
 }
