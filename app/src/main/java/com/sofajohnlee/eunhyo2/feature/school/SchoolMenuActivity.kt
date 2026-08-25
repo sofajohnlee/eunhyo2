@@ -7,6 +7,7 @@ import com.sofajohnlee.eunhyo2.databinding.ActivitySchoolMenuBinding
 import com.sofajohnlee.eunhyo2.feature.ai.AiChatActivity
 import com.sofajohnlee.eunhyo2.feature.clock.ClockStudyActivity
 import com.sofajohnlee.eunhyo2.feature.drawing.DrawingPracticeActivity
+import com.sofajohnlee.eunhyo2.feature.english.EnglishSentenceImportActivity
 import com.sofajohnlee.eunhyo2.feature.english.EnglishStudyActivity
 import com.sofajohnlee.eunhyo2.feature.game.BoardGameScoreActivity
 import com.sofajohnlee.eunhyo2.feature.geometry.GeometryStudyActivity
@@ -37,6 +38,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonKorean.setOnClickListener { open(KoreanStudyActivity::class.java) }
         binding.buttonKoreanPhrase.setOnClickListener { open(KoreanPhraseActivity::class.java) }
         binding.buttonEnglish.setOnClickListener { open(EnglishStudyActivity::class.java) }
+        binding.buttonEnglishSentence.setOnClickListener { open(EnglishSentenceImportActivity::class.java) }
         binding.buttonMath.setOnClickListener { open(MathStudyActivity::class.java) }
         binding.buttonMeasurement.setOnClickListener { open(MeasurementActivity::class.java) }
         binding.buttonGeometry.setOnClickListener { open(GeometryStudyActivity::class.java) }
