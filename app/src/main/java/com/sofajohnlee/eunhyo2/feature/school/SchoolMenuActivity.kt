@@ -11,6 +11,7 @@ import com.sofajohnlee.eunhyo2.feature.english.EnglishSentenceImportActivity
 import com.sofajohnlee.eunhyo2.feature.english.EnglishStudyActivity
 import com.sofajohnlee.eunhyo2.feature.game.BoardGameScoreActivity
 import com.sofajohnlee.eunhyo2.feature.geometry.GeometryStudyActivity
+import com.sofajohnlee.eunhyo2.feature.goldenbell.GoldenBellActivity
 import com.sofajohnlee.eunhyo2.feature.graph.GraphToolsActivity
 import com.sofajohnlee.eunhyo2.feature.hanja.HanjaStudyActivity
 import com.sofajohnlee.eunhyo2.feature.history.HistoryStudyActivity
@@ -21,6 +22,7 @@ import com.sofajohnlee.eunhyo2.feature.korean.KoreanSpellingActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
 import com.sofajohnlee.eunhyo2.feature.koreanbook.KoreanBookActivity
 import com.sofajohnlee.eunhyo2.feature.links.EducationLinksActivity
+import com.sofajohnlee.eunhyo2.feature.magic.MagicActivity
 import com.sofajohnlee.eunhyo2.feature.math.MathStateActivity
 import com.sofajohnlee.eunhyo2.feature.math.MathStudyActivity
 import com.sofajohnlee.eunhyo2.feature.math.MeasurementActivity
@@ -60,6 +62,8 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonLinks.setOnClickListener { open(EducationLinksActivity::class.java) }
         binding.buttonMedia.setOnClickListener { open(MediaLibraryActivity::class.java) }
         binding.buttonSports.setOnClickListener { open(SportsActivity::class.java) }
+        binding.buttonMagic.setOnClickListener { open(MagicActivity::class.java) }
+        binding.buttonGoldenBell.setOnClickListener { open(GoldenBellActivity::class.java) }
         binding.buttonAi.setOnClickListener { open(AiChatActivity::class.java) }
         binding.buttonGame.setOnClickListener { open(BoardGameScoreActivity::class.java) }
     }
