@@ -30,6 +30,8 @@ class GeometryStudyActivity : AppCompatActivity() {
                 viewModel.state.collect { state ->
                     binding.textGeometryTitle.text = "${state.category.label} · ${state.item.title}"
                     binding.textGeometryDescription.text = state.item.description
+                    binding.geometryCanvas.category = state.category
+                    binding.geometryCanvas.title = state.item.title
                 }
             }
         }
