@@ -13,6 +13,7 @@ import com.sofajohnlee.eunhyo2.feature.game.BoardGameScoreActivity
 import com.sofajohnlee.eunhyo2.feature.geometry.GeometryStudyActivity
 import com.sofajohnlee.eunhyo2.feature.goldenbell.GoldenBellActivity
 import com.sofajohnlee.eunhyo2.feature.graph.GraphToolsActivity
+import com.sofajohnlee.eunhyo2.feature.hanja.HanjaRadicalActivity
 import com.sofajohnlee.eunhyo2.feature.hanja.HanjaStudyActivity
 import com.sofajohnlee.eunhyo2.feature.history.HistoryStudyActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanIdiomActivity
@@ -58,6 +59,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonGeometry.setOnClickListener { open(GeometryStudyActivity::class.java) }
         binding.buttonGraph.setOnClickListener { open(GraphToolsActivity::class.java) }
         binding.buttonHanja.setOnClickListener { open(HanjaStudyActivity::class.java) }
+        binding.buttonHanjaRadical.setOnClickListener { open(HanjaRadicalActivity::class.java) }
         binding.buttonHistory.setOnClickListener { open(HistoryStudyActivity::class.java) }
         binding.buttonWorld.setOnClickListener { open(CountryStudyActivity::class.java) }
         binding.buttonClock.setOnClickListener { open(ClockStudyActivity::class.java) }
