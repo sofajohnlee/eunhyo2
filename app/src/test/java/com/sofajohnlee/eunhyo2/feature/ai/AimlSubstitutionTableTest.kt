@@ -7,7 +7,7 @@ import org.junit.Test
 class AimlSubstitutionTableTest {
     @Test
     fun appliesProgramAbStyleSubstitutions() {
-        val source = "\" can't \" ,\" can not \"\n\" i'm \" ,\" I am \"\n"
+        val source = "\" can't \",\" can not \"\n\" i'm \",\" I am \"\n"
         val table = AimlSubstitutionTable.parse(ByteArrayInputStream(source.toByteArray()))
 
         assertEquals("I can not go", table.apply("I can't go"))
@@ -16,7 +16,7 @@ class AimlSubstitutionTableTest {
 
     @Test
     fun appliesPersonSubstitutionWithoutBreakingWhitespace() {
-        val source = "\" you \" ,\" me \"\n\" your \" ,\" my \"\n"
+        val source = "\" you \",\" me \"\n\" your \",\" my \"\n"
         val table = AimlSubstitutionTable.parse(ByteArrayInputStream(source.toByteArray()))
 
         assertEquals("me and my book", table.apply("you and your book"))
