@@ -8,6 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eunhyo2">
 
+        <activity android:name=".feature.korean.KoreanPhraseActivity" android:exported="false" />
         <activity android:name=".feature.graph.GraphToolsActivity" android:exported="false" />
         <activity android:name=".feature.geometry.GeometryStudyActivity" android:exported="false" />
         <activity android:name=".feature.math.MeasurementActivity" android:exported="false" />
