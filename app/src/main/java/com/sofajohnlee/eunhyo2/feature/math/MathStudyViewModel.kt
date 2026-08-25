@@ -81,9 +81,9 @@ class MathStudyViewModel(application: Application) : AndroidViewModel(applicatio
         practiceMode: PracticeMode = _uiState.value.practiceMode,
     ) {
         val state = _uiState.value
-        val exercise = when (practiceMode) {
+        val exercise: MathExercise = when (practiceMode) {
             PracticeMode.STANDARD -> generator.generate(numberMode, operation, difficulty)
-            PracticeMode.MIXED -> mixedGenerator.generate(difficulty)
+            PracticeMode.MIXED -> mixedGenerator.generate(difficulty).exercise
         }
         _uiState.value = state.copy(
             operation = operation,
