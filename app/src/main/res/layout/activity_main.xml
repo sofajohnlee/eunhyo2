@@ -64,5 +64,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="@string/math_study" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonHanjaStudy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="한자 학습" />
     </LinearLayout>
 </ScrollView>
