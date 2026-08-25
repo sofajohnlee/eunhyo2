@@ -73,9 +73,9 @@ class KoreanBookStoryRepository {
         }
         val name = koreanCharacterNames.getValue(characterId)
         return when (plot) {
-            StoryPlot.HAPPY -> "$name${if (name.endsWith("는") || name.endsWith("은")) "" else "는"} 유진이를 만나서 행복했어요."
-            StoryPlot.FUNNY -> "$name${if (name.endsWith("는") || name.endsWith("은")) "" else "는"} 유진이를 만나서 웃음이 나왔어요."
-            StoryPlot.MOVING -> "$name에게 어떤 감동적인 이야기가 이어질까요?"
+            StoryPlot.HAPPY -> "${name}${if (name.endsWith("는") || name.endsWith("은")) "" else "는"} 유진이를 만나서 행복했어요."
+            StoryPlot.FUNNY -> "${name}${if (name.endsWith("는") || name.endsWith("은")) "" else "는"} 유진이를 만나서 웃음이 나왔어요."
+            StoryPlot.MOVING -> "${name}에게 어떤 감동적인 이야기가 이어질까요?"
         }
     }
 
