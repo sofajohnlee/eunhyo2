@@ -8,27 +8,46 @@ import org.w3c.dom.Node
 /**
  * Lightweight AIML asset reader used as the safe default adapter.
  *
- * It supports exact-match categories plus Program AB substitution tables used by
- * normal/person/person2. Complex wildcard, SRAI, condition and predicate semantics
- * remain behind the ChatEngine boundary so they can be expanded independently.
+ * Supported semantics now include exact/wildcard patterns, star capture,
+ * normal/person/person2 substitutions, simple SRAI recursion and random lists.
+ * Stateful predicates/condition/that/topic semantics remain isolated for later expansion.
  */
 class AssetAimlChatEngine(
     context: Context,
     private val fallback: ChatEngine = LocalRuleChatEngine(),
 ) : ChatEngine {
+    private data class Category(val pattern: String, val template: Node)
+
     private val appContext = context.applicationContext
     private val normalTable = loadSubstitution("Hari/config/normal.txt")
     private val personTable = loadSubstitution("Hari/config/person.txt")
     private val person2Table = loadSubstitution("Hari/config/person2.txt")
-    private val responses: Map<String, String> = load()
+    private val categories: List<Category> = load()
+    private val exactCategories: Map<String, Category> = categories
+        .filterNot { it.pattern.contains('*') || it.pattern.contains('_') }
+        .associateBy { it.pattern }
+    private val wildcardCategories: List<Category> = categories
+        .filter { it.pattern.contains('*') || it.pattern.contains('_') }
 
-    override fun respond(message: String): String {
+    override fun respond(message: String): String = respondInternal(message, depth = 0)
+
+    private fun respondInternal(message: String, depth: Int): String {
+        if (depth > MAX_RECURSION_DEPTH) return fallback.respond(message)
         val key = normalize(message)
-        return responses[key]?.takeIf { it.isNotBlank() } ?: fallback.respond(message)
+
+        exactCategories[key]?.let { category ->
+            return renderTemplate(category.template, emptyList(), depth).ifBlank { fallback.respond(message) }
+        }
+
+        for (category in wildcardCategories) {
+            val match = AimlPatternMatcher.match(category.pattern, key) ?: continue
+            return renderTemplate(category.template, match.stars, depth).ifBlank { fallback.respond(message) }
+        }
+        return fallback.respond(message)
     }
 
-    private fun load(): Map<String, String> {
-        val result = linkedMapOf<String, String>()
+    private fun load(): List<Category> {
+        val result = mutableListOf<Category>()
         val root = "Hari/aiml"
         val files = appContext.assets.list(root).orEmpty()
             .filter { it.endsWith(".aiml", ignoreCase = true) }
@@ -39,11 +58,13 @@ class AssetAimlChatEngine(
                     val factory = DocumentBuilderFactory.newInstance().apply {
                         isNamespaceAware = false
                         setFeature("http://apache.org/xml/features/disallow-doctype-decl", true)
+                        setFeature("http://xml.org/sax/features/external-general-entities", false)
+                        setFeature("http://xml.org/sax/features/external-parameter-entities", false)
                     }
                     val document = factory.newDocumentBuilder().parse(input)
-                    val categories = document.getElementsByTagName("category")
-                    for (index in 0 until categories.length) {
-                        val node = categories.item(index)
+                    val nodes = document.getElementsByTagName("category")
+                    for (index in 0 until nodes.length) {
+                        val node = nodes.item(index)
                         val children = node.childNodes
                         var pattern: String? = null
                         var templateNode: Node? = null
@@ -56,13 +77,7 @@ class AssetAimlChatEngine(
                         }
                         val normalizedPattern = pattern?.let(::normalize)
                         if (!normalizedPattern.isNullOrBlank() && templateNode != null) {
-                            // Wildcard/SRAI categories are intentionally left to the next engine layer.
-                            if (!normalizedPattern.contains('*') && !normalizedPattern.contains('_')) {
-                                val rendered = renderTemplate(templateNode!!).trim()
-                                if (rendered.isNotBlank()) {
-                                    result.putIfAbsent(normalizedPattern, rendered)
-                                }
-                            }
+                            result += Category(normalizedPattern, templateNode!!)
                         }
                     }
                 }
@@ -71,7 +86,7 @@ class AssetAimlChatEngine(
         return result
     }
 
-    private fun renderTemplate(node: Node): String {
+    private fun renderTemplate(node: Node, stars: List<String>, depth: Int): String {
         val output = StringBuilder()
         val children = node.childNodes
         for (index in 0 until children.length) {
@@ -80,10 +95,26 @@ class AssetAimlChatEngine(
                 Node.TEXT_NODE, Node.CDATA_SECTION_NODE -> output.append(child.nodeValue.orEmpty())
                 Node.ELEMENT_NODE -> when (child.nodeName.lowercase(Locale.US)) {
                     "think" -> Unit
-                    "person" -> output.append(personTable.apply(child.textContent.orEmpty()))
-                    "person2" -> output.append(person2Table.apply(child.textContent.orEmpty()))
+                    "star" -> {
+                        val starIndex = child.attributes?.getNamedItem("index")?.nodeValue?.toIntOrNull() ?: 1
+                        output.append(stars.getOrNull(starIndex - 1).orEmpty())
+                    }
+                    "person" -> output.append(personTable.apply(renderTemplate(child, stars, depth)))
+                    "person2" -> output.append(person2Table.apply(renderTemplate(child, stars, depth)))
+                    "srai" -> {
+                        val redirected = renderTemplate(child, stars, depth).trim()
+                        if (redirected.isNotBlank()) output.append(respondInternal(redirected, depth + 1))
+                    }
+                    "random" -> {
+                        val options = (0 until child.childNodes.length)
+                            .map { child.childNodes.item(it) }
+                            .filter { it.nodeType == Node.ELEMENT_NODE && it.nodeName.equals("li", true) }
+                        if (options.isNotEmpty()) output.append(renderTemplate(options.random(), stars, depth))
+                    }
+                    "uppercase" -> output.append(renderTemplate(child, stars, depth).uppercase(Locale.US))
+                    "lowercase" -> output.append(renderTemplate(child, stars, depth).lowercase(Locale.US))
                     "br" -> output.append('\n')
-                    else -> output.append(renderTemplate(child))
+                    else -> output.append(renderTemplate(child, stars, depth))
                 }
             }
         }
@@ -99,4 +130,8 @@ class AssetAimlChatEngine(
         .trim()
         .uppercase(Locale.US)
         .replace(Regex("\\s+"), " ")
+
+    companion object {
+        private const val MAX_RECURSION_DEPTH = 8
+    }
 }
