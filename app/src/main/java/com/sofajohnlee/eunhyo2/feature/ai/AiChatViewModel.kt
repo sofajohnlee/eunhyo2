@@ -1,13 +1,14 @@
 package com.sofajohnlee.eunhyo2.feature.ai
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class AiChatViewModel(
-    private val engine: ChatEngine = LocalRuleChatEngine(),
-) : ViewModel() {
+class AiChatViewModel(application: Application) : AndroidViewModel(application) {
+    private val engine: ChatEngine = AssetAimlChatEngine(application)
+
     private val _messages = MutableStateFlow<List<ChatMessage>>(emptyList())
     val messages: StateFlow<List<ChatMessage>> = _messages.asStateFlow()
 
