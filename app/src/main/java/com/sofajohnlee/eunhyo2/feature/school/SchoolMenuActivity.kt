@@ -29,6 +29,7 @@ import com.sofajohnlee.eunhyo2.feature.math.MeasurementActivity
 import com.sofajohnlee.eunhyo2.feature.media.MediaLibraryActivity
 import com.sofajohnlee.eunhyo2.feature.personality.PersonalityQuizActivity
 import com.sofajohnlee.eunhyo2.feature.sports.SportsActivity
+import com.sofajohnlee.eunhyo2.feature.world.CountryStudyActivity
 
 class SchoolMenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySchoolMenuBinding
@@ -58,6 +59,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonGraph.setOnClickListener { open(GraphToolsActivity::class.java) }
         binding.buttonHanja.setOnClickListener { open(HanjaStudyActivity::class.java) }
         binding.buttonHistory.setOnClickListener { open(HistoryStudyActivity::class.java) }
+        binding.buttonWorld.setOnClickListener { open(CountryStudyActivity::class.java) }
         binding.buttonClock.setOnClickListener { open(ClockStudyActivity::class.java) }
         binding.buttonDrawing.setOnClickListener { open(DrawingPracticeActivity::class.java) }
         binding.buttonLinks.setOnClickListener { open(EducationLinksActivity::class.java) }
