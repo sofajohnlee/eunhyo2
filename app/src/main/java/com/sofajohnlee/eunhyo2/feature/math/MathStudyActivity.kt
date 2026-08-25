@@ -19,10 +19,19 @@ class MathStudyActivity : AppCompatActivity() {
         binding = ActivityMathStudyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.buttonNatural.setOnClickListener { viewModel.selectNumberMode(NumberMode.NATURAL) }
+        binding.buttonDecimal.setOnClickListener { viewModel.selectNumberMode(NumberMode.DECIMAL) }
+        binding.buttonFraction.setOnClickListener { viewModel.selectNumberMode(NumberMode.FRACTION) }
+
+        binding.buttonBeginner.setOnClickListener { viewModel.selectDifficulty(MathDifficulty.BEGINNER) }
+        binding.buttonIntermediate.setOnClickListener { viewModel.selectDifficulty(MathDifficulty.INTERMEDIATE) }
+        binding.buttonAdvanced.setOnClickListener { viewModel.selectDifficulty(MathDifficulty.ADVANCED) }
+
         binding.buttonAdd.setOnClickListener { viewModel.selectOperation(MathOperation.ADD) }
         binding.buttonSubtract.setOnClickListener { viewModel.selectOperation(MathOperation.SUBTRACT) }
         binding.buttonMultiply.setOnClickListener { viewModel.selectOperation(MathOperation.MULTIPLY) }
         binding.buttonDivide.setOnClickListener { viewModel.selectOperation(MathOperation.DIVIDE) }
+
         binding.editAnswer.doAfterTextChanged { viewModel.updateInput(it?.toString().orEmpty()) }
         binding.buttonSubmit.setOnClickListener { viewModel.submit() }
         binding.buttonNext.setOnClickListener {
@@ -33,8 +42,9 @@ class MathStudyActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { state ->
-                    binding.textProblem.text = state.problem.expression
+                    binding.textProblem.text = state.exercise.expression
                     binding.textFeedback.text = state.feedback
+                    binding.textScore.text = state.scoreLabel
                 }
             }
         }
