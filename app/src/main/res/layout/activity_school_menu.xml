@@ -9,13 +9,7 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <TextView
-            android:id="@+id/textSchoolLevel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
-
+        <TextView android:id="@+id/textSchoolLevel" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonKorean" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="국어·한글" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonKoreanPhrase" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="국어 문장" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonKoreanIdiom" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="속담·관용어" />
@@ -25,7 +19,8 @@
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonEnglish" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="영어" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonEnglishSentence" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="영어 문장 CSV" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonMath" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="수학" />
-        <com.google.android.material.button.MaterialButton android:id="@+id/buttonMeasurement" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="길이·시간 환산" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonMathState" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="수학 상태 설정" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonMeasurement" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="길이·시간·달력 환산" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonGeometry" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="기하 도형" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonGraph" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="그래프 도구" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonHanja" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="한자" />
