@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">은효</string>
+    <string name="select_grade">학년을 선택하세요.</string>
+    <string name="selected_grade">선택: %1$s</string>
+    <string name="elementary">초등학교</string>
+    <string name="middle">중학교</string>
+    <string name="high">고등학교</string>
+</resources>
