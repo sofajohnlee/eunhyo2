@@ -9,6 +9,10 @@
         android:theme="@style/Theme.Eunhyo2">
 
         <activity
+            android:name=".feature.hanja.HanjaStudyActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".feature.math.MathStudyActivity"
             android:exported="false" />
 
