@@ -19,6 +19,7 @@ class MathStudyActivity : AppCompatActivity() {
         binding = ActivityMathStudyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.buttonMixed.setOnClickListener { viewModel.selectMixedMode() }
         binding.buttonNatural.setOnClickListener { viewModel.selectNumberMode(NumberMode.NATURAL) }
         binding.buttonDecimal.setOnClickListener { viewModel.selectNumberMode(NumberMode.DECIMAL) }
         binding.buttonFraction.setOnClickListener { viewModel.selectNumberMode(NumberMode.FRACTION) }
@@ -38,6 +39,7 @@ class MathStudyActivity : AppCompatActivity() {
             binding.editAnswer.text?.clear()
             viewModel.next()
         }
+        binding.buttonResetScore.setOnClickListener { viewModel.resetProgress() }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -45,6 +47,10 @@ class MathStudyActivity : AppCompatActivity() {
                     binding.textProblem.text = state.exercise.expression
                     binding.textFeedback.text = state.feedback
                     binding.textScore.text = state.scoreLabel
+                    binding.textMode.text = when (state.practiceMode) {
+                        MathStudyViewModel.PracticeMode.STANDARD -> "${state.numberMode.label} · ${state.operation.symbol} · ${state.difficulty.label}"
+                        MathStudyViewModel.PracticeMode.MIXED -> "혼합연산 · ${state.difficulty.label}"
+                    }
                 }
             }
         }
