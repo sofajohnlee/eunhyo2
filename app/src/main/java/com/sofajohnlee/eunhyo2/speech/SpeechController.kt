@@ -14,9 +14,17 @@ class SpeechController(context: Context) : TextToSpeech.OnInitListener {
     }
 
     fun speak(text: String, language: StudyLanguage) {
+        speak(text, language.localeTag)
+    }
+
+    fun speak(text: String, localeTag: String) {
         if (!ready || text.isBlank()) return
-        tts.language = Locale.forLanguageTag(language.localeTag)
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "eunhyo2-learning-card")
+        tts.language = Locale.forLanguageTag(localeTag)
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "eunhyo2-speech")
+    }
+
+    fun stop() {
+        if (ready) tts.stop()
     }
 
     fun shutdown() {
