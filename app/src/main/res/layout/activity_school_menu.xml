@@ -19,6 +19,7 @@
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonKorean" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="국어·한글" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonKoreanPhrase" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="국어 문장" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonEnglish" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="영어" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonEnglishSentence" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="영어 문장 CSV" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonMath" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="수학" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonMeasurement" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="길이·시간 환산" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonGeometry" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="기하 도형" />
