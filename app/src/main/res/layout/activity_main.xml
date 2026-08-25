@@ -71,5 +71,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="한자 학습" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="환경 설정" />
     </LinearLayout>
 </ScrollView>
