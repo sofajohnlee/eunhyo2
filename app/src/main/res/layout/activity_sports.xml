@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="스포츠 학습"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonJumpRope"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="줄넘기" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonBadminton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="배드민턴" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonTableTennis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="탁구" />
+</LinearLayout>
