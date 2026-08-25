@@ -8,6 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eunhyo2">
 
+        <activity android:name=".feature.clock.ClockStudyActivity" android:exported="false" />
         <activity android:name=".feature.ai.AiChatActivity" android:exported="false" />
         <activity android:name=".feature.media.MediaLibraryActivity" android:exported="false" />
         <activity android:name=".feature.history.HistoryStudyActivity" android:exported="false" />
