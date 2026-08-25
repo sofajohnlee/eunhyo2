@@ -16,6 +16,13 @@
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
 
+        <com.sofajohnlee.eunhyo2.feature.geometry.GeometryCanvasView
+            android:id="@+id/geometryCanvas"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="도형 학습 그림" />
+
         <TextView
             android:id="@+id/textGeometryDescription"
             android:layout_width="match_parent"
