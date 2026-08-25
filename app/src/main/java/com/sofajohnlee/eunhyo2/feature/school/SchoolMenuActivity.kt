@@ -18,6 +18,7 @@ import com.sofajohnlee.eunhyo2.feature.korean.KoreanIdiomActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanPhraseActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanSpellingActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
+import com.sofajohnlee.eunhyo2.feature.koreanbook.KoreanBookActivity
 import com.sofajohnlee.eunhyo2.feature.links.EducationLinksActivity
 import com.sofajohnlee.eunhyo2.feature.math.MathStudyActivity
 import com.sofajohnlee.eunhyo2.feature.math.MeasurementActivity
@@ -41,6 +42,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonKoreanPhrase.setOnClickListener { open(KoreanPhraseActivity::class.java) }
         binding.buttonKoreanIdiom.setOnClickListener { open(KoreanIdiomActivity::class.java) }
         binding.buttonKoreanSpelling.setOnClickListener { open(KoreanSpellingActivity::class.java) }
+        binding.buttonKoreanBook.setOnClickListener { open(KoreanBookActivity::class.java) }
         binding.buttonEnglish.setOnClickListener { open(EnglishStudyActivity::class.java) }
         binding.buttonEnglishSentence.setOnClickListener { open(EnglishSentenceImportActivity::class.java) }
         binding.buttonMath.setOnClickListener { open(MathStudyActivity::class.java) }
