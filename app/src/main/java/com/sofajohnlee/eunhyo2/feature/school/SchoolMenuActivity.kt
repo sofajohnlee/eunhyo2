@@ -19,6 +19,7 @@ import com.sofajohnlee.eunhyo2.feature.links.EducationLinksActivity
 import com.sofajohnlee.eunhyo2.feature.math.MathStudyActivity
 import com.sofajohnlee.eunhyo2.feature.math.MeasurementActivity
 import com.sofajohnlee.eunhyo2.feature.media.MediaLibraryActivity
+import com.sofajohnlee.eunhyo2.feature.sports.SportsActivity
 
 class SchoolMenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySchoolMenuBinding
@@ -46,6 +47,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonDrawing.setOnClickListener { open(DrawingPracticeActivity::class.java) }
         binding.buttonLinks.setOnClickListener { open(EducationLinksActivity::class.java) }
         binding.buttonMedia.setOnClickListener { open(MediaLibraryActivity::class.java) }
+        binding.buttonSports.setOnClickListener { open(SportsActivity::class.java) }
         binding.buttonAi.setOnClickListener { open(AiChatActivity::class.java) }
         binding.buttonGame.setOnClickListener { open(BoardGameScoreActivity::class.java) }
     }
