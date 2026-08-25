@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="길이·시간 환산"
+            android:text="길이·시간·달력 환산"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
 
         <EditText
@@ -20,36 +20,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:inputType="number"
-            android:hint="값 입력" />
+            android:hint="값 입력"
+            android:inputType="number" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonMetersToCm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="m → cm" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonCmToMeters"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="cm → m + cm" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonHoursToMinutes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="시간 → 분" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonMinutesToHours"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="분 → 시간 + 분" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonMetersToCm" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="m → cm" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonCmToMeters" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="cm → m + cm" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonHoursToMinutes" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="시간 → 분" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonMinutesToHours" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="분 → 시간 + 분" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonDaysToHours" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="일 → 시간" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonHoursToDays" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="시간 → 일 + 시간" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonWeeksToDays" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="주 → 일" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonDaysToWeeks" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="일 → 주 + 일" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonYearsToMonths" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="년 → 개월" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonMonthsToYears" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="개월 → 년 + 개월" />
 
         <TextView
             android:id="@+id/textResult"
