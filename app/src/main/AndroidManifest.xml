@@ -8,6 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eunhyo2">
 
+        <activity android:name=".feature.math.MeasurementActivity" android:exported="false" />
         <activity android:name=".feature.links.EducationLinksActivity" android:exported="false" />
         <activity android:name=".feature.drawing.DrawingPracticeActivity" android:exported="false" />
         <activity android:name=".feature.clock.ClockStudyActivity" android:exported="false" />
