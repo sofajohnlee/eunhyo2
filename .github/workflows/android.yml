@@ -30,11 +30,8 @@ jobs:
     steps:
       - name: Checkout modern project
         uses: actions/checkout@v4
-      - name: Checkout original eunhyo without modifying it
-        uses: actions/checkout@v4
-        with:
-          repository: sofajohnlee/eunhyo
-          path: legacy-eunhyo
+      - name: Clone original eunhyo read-only
+        run: git clone --depth 1 https://github.com/sofajohnlee/eunhyo.git legacy-eunhyo
       - name: Import exact legacy text assets
         run: bash tools/import_legacy_text_assets.sh legacy-eunhyo
       - name: Import exact legacy binary assets
