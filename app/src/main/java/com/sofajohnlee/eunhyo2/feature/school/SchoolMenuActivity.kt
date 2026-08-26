@@ -31,6 +31,7 @@ import com.sofajohnlee.eunhyo2.feature.math.MeasurementActivity
 import com.sofajohnlee.eunhyo2.feature.media.MediaLibraryActivity
 import com.sofajohnlee.eunhyo2.feature.personality.PersonalityQuizActivity
 import com.sofajohnlee.eunhyo2.feature.sports.SportsActivity
+import com.sofajohnlee.eunhyo2.feature.typing.TypingPracticeActivity
 import com.sofajohnlee.eunhyo2.feature.world.CountryStudyActivity
 
 class SchoolMenuActivity : AppCompatActivity() {
@@ -54,6 +55,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonKoreanBook.setOnClickListener { open(KoreanBookActivity::class.java) }
         binding.buttonEnglish.setOnClickListener { open(EnglishStudyActivity::class.java) }
         binding.buttonEnglishSentence.setOnClickListener { open(EnglishSentenceImportActivity::class.java) }
+        binding.buttonTyping.setOnClickListener { open(TypingPracticeActivity::class.java) }
         binding.buttonMath.setOnClickListener { open(MathStudyActivity::class.java) }
         binding.buttonMathState.setOnClickListener { open(MathStateActivity::class.java) }
         binding.buttonMeasurement.setOnClickListener { open(MeasurementActivity::class.java) }
