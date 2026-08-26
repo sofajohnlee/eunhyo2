@@ -1,6 +1,8 @@
 package com.sofajohnlee.eunhyo2.feature.ai
 
 import android.content.Context
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 import javax.xml.parsers.DocumentBuilderFactory
 import org.w3c.dom.Node
@@ -10,7 +12,8 @@ import org.w3c.dom.Node
  *
  * Supported semantics include exact/wildcard patterns, star capture,
  * normal/person/person2 substitutions, SRAI, random lists, session predicates,
- * set/get, simple condition, that/topic matching and case transforms.
+ * set/get, simple condition, that/topic matching, bot properties, date metadata
+ * and case transforms.
  */
 class AssetAimlChatEngine(
     context: Context,
@@ -28,7 +31,15 @@ class AssetAimlChatEngine(
     private val personTable = loadSubstitution("Hari/config/person.txt")
     private val person2Table = loadSubstitution("Hari/config/person2.txt")
     private val predicates = loadPredicates()
+    private val botProperties = loadBotProperties()
     private val categories: List<Category> = load()
+    private val vocabularySize: Int by lazy {
+        categories.asSequence()
+            .flatMap { it.pattern.split(Regex("\\s+")).asSequence() }
+            .filter { it != "*" && it != "_" }
+            .toSet()
+            .size
+    }
     private var lastResponse: String = ""
 
     override fun respond(message: String): String {
@@ -137,14 +148,18 @@ class AssetAimlChatEngine(
                     "person" -> output.append(personTable.apply(renderTemplate(child, stars, depth)))
                     "person2" -> output.append(person2Table.apply(renderTemplate(child, stars, depth)))
                     "set" -> {
-                        val name = child.attributes?.getNamedItem("name")?.nodeValue.orEmpty()
+                        val name = predicateName(child)
                         val value = renderTemplate(child, stars, depth)
                         output.append(predicates.set(name, value))
                     }
-                    "get" -> {
+                    "get" -> output.append(predicates.get(predicateName(child)))
+                    "bot" -> {
                         val name = child.attributes?.getNamedItem("name")?.nodeValue.orEmpty()
-                        output.append(predicates.get(name))
+                        output.append(botProperties[name].orEmpty())
                     }
+                    "size" -> output.append(categories.size)
+                    "vocabulary" -> output.append(vocabularySize)
+                    "date" -> output.append(renderDate(child))
                     "condition" -> output.append(renderCondition(child, stars, depth))
                     "srai" -> {
                         val redirected = renderTemplate(child, stars, depth).trim()
@@ -176,7 +191,7 @@ class AssetAimlChatEngine(
     }
 
     private fun renderCondition(node: Node, stars: List<String>, depth: Int): String {
-        val name = node.attributes?.getNamedItem("name")?.nodeValue.orEmpty()
+        val name = predicateName(node)
         val directValue = node.attributes?.getNamedItem("value")?.nodeValue
         if (name.isNotBlank() && directValue != null) {
             return if (predicates.get(name).equals(directValue, ignoreCase = true)) {
@@ -198,6 +213,40 @@ class AssetAimlChatEngine(
         }
         return defaultNode?.let { renderTemplate(it, stars, depth) }.orEmpty()
     }
+
+    private fun predicateName(node: Node): String =
+        node.attributes?.getNamedItem("name")?.nodeValue
+            ?: node.attributes?.getNamedItem("var")?.nodeValue
+            ?: ""
+
+    private fun renderDate(node: Node): String {
+        val javaPattern = node.attributes?.getNamedItem("jformat")?.nodeValue
+        val strftimePattern = node.attributes?.getNamedItem("format")?.nodeValue
+        val pattern = javaPattern ?: strftimePattern?.let(::strftimeToJava) ?: "EEE MMM dd HH:mm:ss z yyyy"
+        return runCatching {
+            SimpleDateFormat(pattern, Locale.getDefault()).format(Date())
+        }.getOrElse { Date().toString() }
+    }
+
+    private fun strftimeToJava(value: String): String = value
+        .replace("%A", "EEEE")
+        .replace("%Y", "yyyy")
+        .replace("%B", "MMMM")
+        .replace("%d", "dd")
+        .replace("%I", "hh")
+        .replace("%M", "mm")
+        .replace("%p", "a")
+
+    private fun loadBotProperties(): Map<String, String> = runCatching {
+        appContext.assets.open("Hari/config/properties.txt").bufferedReader().useLines { lines ->
+            lines.mapNotNull { line ->
+                val trimmed = line.trim()
+                if (trimmed.isBlank() || trimmed.startsWith("#") || ':' !in trimmed) return@mapNotNull null
+                val (key, value) = trimmed.split(':', limit = 2)
+                key.trim() to value.trim()
+            }.toMap()
+        }
+    }.getOrDefault(emptyMap())
 
     private fun loadPredicates(): AimlPredicateStore = runCatching {
         appContext.assets.open("Hari/config/predicates.txt").use(AimlPredicateStore::parse)
