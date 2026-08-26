@@ -23,6 +23,7 @@ import com.sofajohnlee.eunhyo2.feature.korean.KoreanPronunciationActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanSpellingActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
 import com.sofajohnlee.eunhyo2.feature.koreanbook.KoreanBookActivity
+import com.sofajohnlee.eunhyo2.feature.legacy.LegacyLearningGalleryActivity
 import com.sofajohnlee.eunhyo2.feature.links.EducationLinksActivity
 import com.sofajohnlee.eunhyo2.feature.magic.MagicActivity
 import com.sofajohnlee.eunhyo2.feature.math.GcdLcmActivity
@@ -66,6 +67,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonMeasurement.setOnClickListener { open(MeasurementActivity::class.java) }
         binding.buttonGcdLcm.setOnClickListener { open(GcdLcmActivity::class.java) }
         binding.buttonGeometry.setOnClickListener { open(GeometryStudyActivity::class.java) }
+        binding.buttonLegacyGallery.setOnClickListener { open(LegacyLearningGalleryActivity::class.java) }
         binding.buttonGraph.setOnClickListener { open(GraphToolsActivity::class.java) }
         binding.buttonHanja.setOnClickListener { open(HanjaStudyActivity::class.java) }
         binding.buttonHanjaRadical.setOnClickListener { open(HanjaRadicalActivity::class.java) }
