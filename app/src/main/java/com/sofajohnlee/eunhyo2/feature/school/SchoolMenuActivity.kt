@@ -29,6 +29,7 @@ import com.sofajohnlee.eunhyo2.feature.math.GcdLcmActivity
 import com.sofajohnlee.eunhyo2.feature.math.MathStateActivity
 import com.sofajohnlee.eunhyo2.feature.math.MathStudyActivity
 import com.sofajohnlee.eunhyo2.feature.math.MeasurementActivity
+import com.sofajohnlee.eunhyo2.feature.maze.MazeActivity
 import com.sofajohnlee.eunhyo2.feature.media.MediaLibraryActivity
 import com.sofajohnlee.eunhyo2.feature.personality.PersonalityQuizActivity
 import com.sofajohnlee.eunhyo2.feature.sports.SportsActivity
@@ -76,6 +77,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonMagic.setOnClickListener { open(MagicActivity::class.java) }
         binding.buttonGoldenBell.setOnClickListener { open(GoldenBellActivity::class.java) }
         binding.buttonPersonality.setOnClickListener { open(PersonalityQuizActivity::class.java) }
+        binding.buttonMaze.setOnClickListener { open(MazeActivity::class.java) }
         binding.buttonAi.setOnClickListener { open(AiChatActivity::class.java) }
         binding.buttonGame.setOnClickListener { open(BoardGameScoreActivity::class.java) }
     }
