@@ -65,7 +65,7 @@ class StudyMailActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun todayKey(): String = SimpleDateFormat("yyyyMMdd", Locale.US).format(Date())
 
-    private fun outgoingFile() = fileStreamPath("omail${todayKey()}.txt")
+    private fun outgoingFile() = getFileStreamPath("omail${todayKey()}.txt")
 
     private fun loadTodayOutgoing() {
         val file = outgoingFile()
