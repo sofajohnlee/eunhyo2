@@ -6,15 +6,13 @@ Target IDE: Android Studio Meerkat | 2024.3.1
 
 ## Status
 
-**Code migration and automated verification: complete.**
+**Final legacy-manifest audit is in progress.**
 
-Latest verified code commit: `a635e368fa8b256dd8e3e03791d727889dd4f409`
-
-Android CI run 323 completed successfully with:
+Android CI run 323 and run 324 completed successfully with:
 
 `clean + testDebugUnitTest + lintDebug + assembleDebug`
 
-The remaining acceptance work is limited to authorized legacy-asset parity verification and emulator/device smoke testing in Android Studio Meerkat | 2024.3.1.
+During the final manifest audit, additional legacy curriculum-link and image-only learning activities were identified. These are now being consolidated into `EducationLinksActivity` and `LegacyLearningGalleryActivity` rather than copied one-for-one. Therefore the migration is not marked final until the remaining manifest entries have been classified and the latest post-audit CI is green.
 
 ## Completed functional migrations
 
@@ -25,9 +23,11 @@ The remaining acceptance work is limited to authorized legacy-asset parity verif
 - Arithmetic, mixed math, measurement, GCD/LCM, geometry, graph tool, math state
 - Hanja study and multi-file radical CSV import
 - History and country study
-- Clock, drawing, education links, media, sports, magic, Golden Bell, personality quiz
+- Clock, drawing, media, sports, magic, Golden Bell, personality quiz
 - Board-game score and maze game
 - Hari AIML adapter with normalization, wildcard/star, SRAI, random, predicates, condition, that/topic matching, bot properties, date/size/vocabulary, runtime learn/learnf, eval, input/response and session learning support
+- Legacy Khan Academy curriculum links discovered in `MainMathM10/M11/M20/M21`, `MainEngM10/M11`, and elementary geometry menus are being consolidated into the education-link catalog
+- Legacy image-only materials such as `math_m12` and `st_a0_001` through `st_c1_001` are exposed through a zoomable gallery after binary asset import
 
 ## Consolidated legacy activities
 
@@ -37,6 +37,8 @@ The following legacy activities are intentionally absorbed into shared modern sc
 - `MainMathPlus`, `MainMathMinus`, `MainMathMulti`, `MainMathDiv`, `MainMathMix` -> `MathStudyActivity`
 - `MainMathMsrCvt`, `MainMathMsrCvt3` -> `MeasurementActivity`
 - `MainEcpuTyp01`, `MainEcpuTyp02` -> `TypingPracticeActivity`
+- `MainMathM10/M11/M20/M21`, `MainEngM10/M11`, `MainKanMathElGeo*` link menus -> `EducationLinksActivity`
+- `MainMathM12` and selected tracing/image-only screens -> `LegacyLearningGalleryActivity`
 - `MainCourageAvi*`, sports/magic video wrappers -> catalog based external video opening
 - school-level wrapper activities -> `SchoolMenuActivity`
 
@@ -49,23 +51,19 @@ The original repository contains Hari AIML/config text plus binary artwork/audio
 - `app1/src/main/res/mipmap*`
 - `app1/src/main/res/raw/song1.mp3`
 
-Confirmed examples include `cha*.jpg`, `dial*.png`, `dogkeeping*.jpg`, English learning artwork, `st_a0_001.png` style tracing assets and `song1.mp3`.
-
 Exact import helpers are provided:
 
 - `tools/import_legacy_text_assets.sh`
 - `tools/import_legacy_binary_assets.sh`
 - `tools/verify_legacy_asset_parity.sh`
 
-The parity verifier compares imported AIML/config and supported PNG/JPG/WebP/MP3 resources byte-for-byte with the original checkout. The source repository is not anonymously accessible from GitHub Actions, so exact source/target parity verification is intentionally performed only in an authorized local checkout; the default CI remains independent of the source repository.
+The parity verifier compares imported AIML/config and supported PNG/JPG/WebP/MP3 resources byte-for-byte with the original checkout. Exact source/target parity verification is performed in an authorized local checkout; the default CI remains independent of the source repository.
 
 ## Automated verification
 
-GitHub Actions continuously runs the modern source-only verification:
+GitHub Actions continuously runs:
 
 `clean + testDebugUnitTest + lintDebug + assembleDebug`
-
-Run 323 passed all of these gates.
 
 For an authorized checkout of the original repository, run:
 
@@ -76,13 +74,11 @@ bash tools/verify_legacy_asset_parity.sh ../eunhyo app/src/main
 ./gradlew clean testDebugUnitTest lintDebug assembleDebug
 ```
 
-This preserves the original `sofajohnlee/eunhyo` repository while providing a byte-for-byte asset acceptance gate in an environment that has access to it.
+## Remaining final gates
 
-## Remaining final gate
-
-1. In an authorized checkout, import and verify the original Hari/image/audio assets with the provided scripts.
-2. Open `eunhyo2` in Android Studio Meerkat | 2024.3.1.
-3. Perform a clean Gradle sync/build.
-4. Run the emulator/device acceptance checks in `docs/SMOKE_TEST_CHECKLIST.md`.
+1. Finish classifying every remaining activity in the original manifest as migrated, consolidated, obsolete, or asset-only.
+2. Confirm the latest post-audit CI succeeds.
+3. In an authorized checkout, import and verify the original Hari/image/audio assets.
+4. Open `eunhyo2` in Android Studio Meerkat | 2024.3.1 and run `docs/SMOKE_TEST_CHECKLIST.md` on an emulator/device.
 
 The original `sofajohnlee/eunhyo` repository must remain unchanged.
