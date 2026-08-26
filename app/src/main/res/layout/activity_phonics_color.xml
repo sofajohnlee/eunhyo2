@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/textGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textWord"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:id="@+id/buttonPreviousGroup" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="이전 색상" />
+        <Button android:id="@+id/buttonNextGroup" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="다음 색상" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+        <Button android:id="@+id/buttonPreviousWord" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="이전 단어" />
+        <Button android:id="@+id/buttonSpeak" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="읽기" />
+        <Button android:id="@+id/buttonNextWord" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="다음 단어" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textSource"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center" />
+</LinearLayout>
