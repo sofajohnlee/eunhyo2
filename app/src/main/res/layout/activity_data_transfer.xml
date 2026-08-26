@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="점수·상태 데이터 가져오기/내보내기"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
+
+        <EditText android:id="@+id/editMyScore" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:hint="내 점수" android:inputType="numberSigned" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonSaveMyScore" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="내 점수 저장" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonImportMyScore" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="mscore 가져오기" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonExportMyScore" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="mscore 내보내기" />
+
+        <EditText android:id="@+id/editYourScore" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:hint="상대 점수" android:inputType="numberSigned" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonSaveYourScore" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="상대 점수 저장" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonImportYourScore" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="yscore 가져오기" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonExportYourScore" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="yscore 내보내기" />
+
+        <EditText android:id="@+id/editState" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:hint="수학 상태(0~4)" android:inputType="number" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonSaveState" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="상태 저장" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonImportState" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="mstate 가져오기" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonExportState" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="mstate 내보내기" />
+    </LinearLayout>
+</ScrollView>
