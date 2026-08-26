@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView android:id="@+id/textTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
+        <ImageView android:id="@+id/imageSlide" android:layout_width="match_parent" android:layout_height="420dp" android:layout_marginTop="12dp" android:adjustViewBounds="true" android:scaleType="fitCenter" />
+        <TextView android:id="@+id/textStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonSet" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="다음 슬라이드 세트" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonPrevious" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="이전" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonNext" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="다음" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonAuto" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="자동 넘김 켜기" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonSound" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="배경음 켜기" />
+    </LinearLayout>
+</ScrollView>
