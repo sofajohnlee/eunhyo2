@@ -33,6 +33,7 @@ import com.sofajohnlee.eunhyo2.feature.math.MeasurementActivity
 import com.sofajohnlee.eunhyo2.feature.maze.MazeActivity
 import com.sofajohnlee.eunhyo2.feature.media.KoreanSongActivity
 import com.sofajohnlee.eunhyo2.feature.media.MediaLibraryActivity
+import com.sofajohnlee.eunhyo2.feature.notebook.StudyMailActivity
 import com.sofajohnlee.eunhyo2.feature.personality.PersonalityQuizActivity
 import com.sofajohnlee.eunhyo2.feature.sports.SportsActivity
 import com.sofajohnlee.eunhyo2.feature.typing.TypingPracticeActivity
@@ -76,6 +77,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonClock.setOnClickListener { open(ClockStudyActivity::class.java) }
         binding.buttonDrawing.setOnClickListener { open(DrawingPracticeActivity::class.java) }
         binding.buttonLinks.setOnClickListener { open(EducationLinksActivity::class.java) }
+        binding.buttonStudyMail.setOnClickListener { open(StudyMailActivity::class.java) }
         binding.buttonMedia.setOnClickListener { open(MediaLibraryActivity::class.java) }
         binding.buttonSports.setOnClickListener { open(SportsActivity::class.java) }
         binding.buttonMagic.setOnClickListener { open(MagicActivity::class.java) }
