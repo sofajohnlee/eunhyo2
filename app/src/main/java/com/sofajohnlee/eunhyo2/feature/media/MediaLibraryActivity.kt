@@ -15,7 +15,7 @@ class MediaLibraryActivity : AppCompatActivity() {
         binding = ActivityMediaLibraryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val items = MediaCatalog.courageVideos
+        val items = MediaCatalog.allVideos
         binding.listMedia.adapter = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
