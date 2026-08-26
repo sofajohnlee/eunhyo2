@@ -5,7 +5,8 @@ set -euo pipefail
 #   ./tools/import_legacy_text_assets.sh ../eunhyo
 #
 # Copies the original Hari AIML/config text assets and extracts embedded
-# Hanja/phonics data from a local checkout of sofajohnlee/eunhyo without modifying it.
+# Hanja/phonics/multilingual Korean data from a local checkout of sofajohnlee/eunhyo
+# without modifying the original repository.
 
 SOURCE_ROOT="${1:-../eunhyo}"
 SOURCE_HARI="$SOURCE_ROOT/app1/src/main/assets/Hari"
@@ -25,13 +26,14 @@ find "$SOURCE_HARI/aiml" -maxdepth 1 -type f \
   done
 
 find "$SOURCE_HARI/config" -maxdepth 1 -type f -name '*.txt' -print0 | while IFS= read -r -d '' file; do
-  cp -p "$file" "$TARGET_HARI/config/$(basename "$file")"
+    cp -p "$file" "$TARGET_HARI/config/$(basename "$file")"
 done
 
 echo "Hari text assets copied from $SOURCE_HARI to $TARGET_HARI"
 
 python3 tools/extract_legacy_hanja.py "$SOURCE_ROOT"
 python3 tools/extract_legacy_phonics.py "$SOURCE_ROOT"
+python3 tools/extract_legacy_kgkorean.py "$SOURCE_ROOT"
 
 echo "Legacy text/data import complete"
-echo "Review with: git diff -- app/src/main/assets/Hari app/src/main/assets/hanja app/src/main/assets/legacy_phonics.csv"
+echo "Review with: git diff -- app/src/main/assets/Hari app/src/main/assets/hanja app/src/main/assets/legacy_phonics.csv app/src/main/assets/korean/legacy_kgkorean.csv"
