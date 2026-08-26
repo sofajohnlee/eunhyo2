@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.sofajohnlee.eunhyo2.databinding.ActivitySchoolMenuBinding
 import com.sofajohnlee.eunhyo2.feature.ai.AiChatActivity
 import com.sofajohnlee.eunhyo2.feature.clock.ClockStudyActivity
+import com.sofajohnlee.eunhyo2.feature.doc.PdfLibraryActivity
 import com.sofajohnlee.eunhyo2.feature.drawing.DrawingPracticeActivity
 import com.sofajohnlee.eunhyo2.feature.english.AlphabetTraceActivity
 import com.sofajohnlee.eunhyo2.feature.english.EnglishSentenceImportActivity
@@ -68,6 +69,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonPhonicsColor.setOnClickListener { open(PhonicsColorActivity::class.java) }
         binding.buttonEnglishWord.setOnClickListener { open(EnglishWordPracticeActivity::class.java) }
         binding.buttonEnglishSentence.setOnClickListener { open(EnglishSentenceImportActivity::class.java) }
+        binding.buttonPdfLibrary.setOnClickListener { open(PdfLibraryActivity::class.java) }
         binding.buttonTyping.setOnClickListener { open(TypingPracticeActivity::class.java) }
         binding.buttonMath.setOnClickListener { open(MathStudyActivity::class.java) }
         binding.buttonMathProgress.setOnClickListener { open(MathProgressActivity::class.java) }
