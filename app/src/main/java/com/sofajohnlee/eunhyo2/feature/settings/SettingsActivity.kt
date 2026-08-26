@@ -1,5 +1,6 @@
 package com.sofajohnlee.eunhyo2.feature.settings
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sofajohnlee.eunhyo2.databinding.ActivitySettingsBinding
@@ -30,6 +31,9 @@ class SettingsActivity : AppCompatActivity() {
                 )
             )
             binding.textResult.text = "설정을 저장했습니다."
+        }
+        binding.buttonDataTransfer.setOnClickListener {
+            startActivity(Intent(this, DataTransferActivity::class.java))
         }
     }
 }
