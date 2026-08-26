@@ -26,6 +26,7 @@
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonMeasurement" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="길이·시간·달력 환산" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonGcdLcm" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="최대공약수·최소공배수" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonGeometry" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="기하 도형" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonLegacyGallery" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="원본 그림 학습자료" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonGraph" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="그래프 도구" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonHanja" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="한자" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonHanjaRadical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="한자 부수" />
