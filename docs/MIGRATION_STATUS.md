@@ -4,6 +4,18 @@ Source: `sofajohnlee/eunhyo`
 Target: `sofajohnlee/eunhyo2`
 Target IDE: Android Studio Meerkat | 2024.3.1
 
+## Status
+
+**Code migration and automated verification: complete.**
+
+Latest verified code commit: `a635e368fa8b256dd8e3e03791d727889dd4f409`
+
+Android CI run 323 completed successfully with:
+
+`clean + testDebugUnitTest + lintDebug + assembleDebug`
+
+The remaining acceptance work is limited to authorized legacy-asset parity verification and emulator/device smoke testing in Android Studio Meerkat | 2024.3.1.
+
 ## Completed functional migrations
 
 - Main navigation and school-level menus
@@ -45,13 +57,15 @@ Exact import helpers are provided:
 - `tools/import_legacy_binary_assets.sh`
 - `tools/verify_legacy_asset_parity.sh`
 
-The parity verifier compares imported AIML/config and supported PNG/JPG/WebP/MP3 resources byte-for-byte with the original checkout. The source repository is not anonymously accessible from GitHub Actions, so exact source/target parity verification is intentionally performed only in an authorized local checkout; the default CI remains independent of the private source repository.
+The parity verifier compares imported AIML/config and supported PNG/JPG/WebP/MP3 resources byte-for-byte with the original checkout. The source repository is not anonymously accessible from GitHub Actions, so exact source/target parity verification is intentionally performed only in an authorized local checkout; the default CI remains independent of the source repository.
 
 ## Automated verification
 
 GitHub Actions continuously runs the modern source-only verification:
 
 `clean + testDebugUnitTest + lintDebug + assembleDebug`
+
+Run 323 passed all of these gates.
 
 For an authorized checkout of the original repository, run:
 
@@ -66,6 +80,9 @@ This preserves the original `sofajohnlee/eunhyo` repository while providing a by
 
 ## Remaining final gate
 
-The remaining non-automatable acceptance gate is to open the repository in Android Studio Meerkat | 2024.3.1 and perform emulator/device smoke tests using `docs/SMOKE_TEST_CHECKLIST.md`.
+1. In an authorized checkout, import and verify the original Hari/image/audio assets with the provided scripts.
+2. Open `eunhyo2` in Android Studio Meerkat | 2024.3.1.
+3. Perform a clean Gradle sync/build.
+4. Run the emulator/device acceptance checks in `docs/SMOKE_TEST_CHECKLIST.md`.
 
 The original `sofajohnlee/eunhyo` repository must remain unchanged.
