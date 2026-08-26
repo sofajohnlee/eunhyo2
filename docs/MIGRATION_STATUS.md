@@ -45,19 +45,27 @@ Exact import helpers are provided:
 - `tools/import_legacy_binary_assets.sh`
 - `tools/verify_legacy_asset_parity.sh`
 
-The parity verifier compares imported AIML/config and supported PNG/JPG/WebP/MP3 resources byte-for-byte with the original checkout.
+The parity verifier compares imported AIML/config and supported PNG/JPG/WebP/MP3 resources byte-for-byte with the original checkout. The source repository is not anonymously accessible from GitHub Actions, so exact source/target parity verification is intentionally performed only in an authorized local checkout; the default CI remains independent of the private source repository.
 
 ## Automated verification
 
-GitHub Actions now runs two independent build paths:
+GitHub Actions continuously runs the modern source-only verification:
 
-1. Modern source-only build: `clean + testDebugUnitTest + lintDebug + assembleDebug`.
-2. Legacy parity build: checks out `sofajohnlee/eunhyo` read-only into a separate directory, imports exact Hari and binary resources, verifies byte-for-byte parity, then runs the same full Gradle verification.
+`clean + testDebugUnitTest + lintDebug + assembleDebug`
 
-This means the original `sofajohnlee/eunhyo` repository remains unchanged while `eunhyo2` is continuously tested both independently and with the original data/assets present.
+For an authorized checkout of the original repository, run:
+
+```bash
+bash tools/import_legacy_text_assets.sh ../eunhyo
+bash tools/import_legacy_binary_assets.sh ../eunhyo/app1/src/main/res app/src/main/res
+bash tools/verify_legacy_asset_parity.sh ../eunhyo app/src/main
+./gradlew clean testDebugUnitTest lintDebug assembleDebug
+```
+
+This preserves the original `sofajohnlee/eunhyo` repository while providing a byte-for-byte asset acceptance gate in an environment that has access to it.
 
 ## Remaining final gate
 
-The remaining non-automatable acceptance gate is to open the repository in Android Studio Meerkat | 2024.3.1 and perform emulator/device smoke tests of the major user flows. CI provides the reproducible clean build, unit-test, lint and APK assembly gates.
+The remaining non-automatable acceptance gate is to open the repository in Android Studio Meerkat | 2024.3.1 and perform emulator/device smoke tests using `docs/SMOKE_TEST_CHECKLIST.md`.
 
 The original `sofajohnlee/eunhyo` repository must remain unchanged.
