@@ -25,6 +25,7 @@ import com.sofajohnlee.eunhyo2.feature.korean.KoreanPhraseActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanPronunciationActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanSpellingActivity
 import com.sofajohnlee.eunhyo2.feature.korean.KoreanStudyActivity
+import com.sofajohnlee.eunhyo2.feature.korean.MultilingualPictureStudyActivity
 import com.sofajohnlee.eunhyo2.feature.koreanbook.KoreanBookActivity
 import com.sofajohnlee.eunhyo2.feature.legacy.LegacyLearningGalleryActivity
 import com.sofajohnlee.eunhyo2.feature.legacy.LegacySlideshowActivity
@@ -58,6 +59,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.textSchoolLevel.text = level.label
 
         binding.buttonKorean.setOnClickListener { open(KoreanStudyActivity::class.java) }
+        binding.buttonMultilingualPicture.setOnClickListener { open(MultilingualPictureStudyActivity::class.java) }
         binding.buttonKoreanPhrase.setOnClickListener { open(KoreanPhraseActivity::class.java) }
         binding.buttonKoreanIdiom.setOnClickListener { open(KoreanIdiomActivity::class.java) }
         binding.buttonKoreanSpelling.setOnClickListener { open(KoreanSpellingActivity::class.java) }
