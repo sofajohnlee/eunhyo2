@@ -8,6 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eunhyo2">
 
+        <activity android:name=".feature.english.EnglishWordPracticeActivity" android:exported="false" />
         <activity android:name=".feature.typing.TypingPracticeActivity" android:exported="false" />
         <activity android:name=".feature.math.GcdLcmActivity" android:exported="false" />
         <activity android:name=".feature.hanja.HanjaRadicalActivity" android:exported="false" />
