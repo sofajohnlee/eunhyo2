@@ -220,7 +220,9 @@ class AssetAimlChatEngine(
                 it.pattern == category.pattern && it.that == category.that && it.topic == category.topic
             }
             learnedCategories.add(0, category)
-            if (learnedCategories.size > MAX_LEARNED_CATEGORIES) learnedCategories.removeLast()
+            if (learnedCategories.size > MAX_LEARNED_CATEGORIES) {
+                learnedCategories.removeAt(learnedCategories.lastIndex)
+            }
         }
     }
 
