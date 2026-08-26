@@ -9,6 +9,7 @@ import com.sofajohnlee.eunhyo2.feature.clock.ClockStudyActivity
 import com.sofajohnlee.eunhyo2.feature.drawing.DrawingPracticeActivity
 import com.sofajohnlee.eunhyo2.feature.english.EnglishSentenceImportActivity
 import com.sofajohnlee.eunhyo2.feature.english.EnglishStudyActivity
+import com.sofajohnlee.eunhyo2.feature.english.EnglishWordPracticeActivity
 import com.sofajohnlee.eunhyo2.feature.game.BoardGameScoreActivity
 import com.sofajohnlee.eunhyo2.feature.geometry.GeometryStudyActivity
 import com.sofajohnlee.eunhyo2.feature.goldenbell.GoldenBellActivity
@@ -54,6 +55,7 @@ class SchoolMenuActivity : AppCompatActivity() {
         binding.buttonKoreanPronunciation.setOnClickListener { open(KoreanPronunciationActivity::class.java) }
         binding.buttonKoreanBook.setOnClickListener { open(KoreanBookActivity::class.java) }
         binding.buttonEnglish.setOnClickListener { open(EnglishStudyActivity::class.java) }
+        binding.buttonEnglishWord.setOnClickListener { open(EnglishWordPracticeActivity::class.java) }
         binding.buttonEnglishSentence.setOnClickListener { open(EnglishSentenceImportActivity::class.java) }
         binding.buttonTyping.setOnClickListener { open(TypingPracticeActivity::class.java) }
         binding.buttonMath.setOnClickListener { open(MathStudyActivity::class.java) }
