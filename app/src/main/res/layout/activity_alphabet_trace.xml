@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textLetter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="42sp"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="12dp">
+
+        <ImageView
+            android:id="@+id/imageTrace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="알파벳 따라쓰기 안내"
+            android:scaleType="fitCenter" />
+
+        <com.sofajohnlee.eunhyo2.feature.drawing.PracticeDrawingView
+            android:id="@+id/drawingTrace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button android:id="@+id/buttonPrevious" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="이전" />
+        <Button android:id="@+id/buttonCase" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="대/소문자" />
+        <Button android:id="@+id/buttonNext" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="다음" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonClear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="필기 지우기" />
+
+    <TextView
+        android:id="@+id/textAssetHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="원본 letter_u*/letter_l* drawable을 가져오면 안내 이미지가 표시됩니다." />
+</LinearLayout>
