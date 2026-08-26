@@ -10,7 +10,7 @@ class MixedMathGeneratorTest {
         val generator = MixedMathGenerator(Random(42))
         repeat(50) {
             val item = generator.generate(MathDifficulty.INTERMEDIATE)
-            assertTrue(item.exercise.matches(item.exercise.answer))
+            assertTrue(item.exercise.matches(item.exercise.expectedAnswer))
         }
     }
 }
