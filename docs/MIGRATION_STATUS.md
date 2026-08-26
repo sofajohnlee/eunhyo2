@@ -7,7 +7,7 @@ Target IDE: Android Studio Meerkat | 2024.3.1
 ## Completed functional migrations
 
 - Main navigation and school-level menus
-- Korean study, phrases, idioms, spelling, pronunciation, book settings/editor
+- Korean study, phrases, idioms, spelling, pronunciation, book settings/editor, Korean song controller
 - English basic study, CSV sentence import, A-Z word practice
 - Korean/English typing practice
 - Arithmetic, mixed math, measurement, GCD/LCM, geometry, graph tool, math state
@@ -15,7 +15,7 @@ Target IDE: Android Studio Meerkat | 2024.3.1
 - History and country study
 - Clock, drawing, education links, media, sports, magic, Golden Bell, personality quiz
 - Board-game score and maze game
-- Hari AIML adapter with normalization, wildcard/star, SRAI, random, predicates, condition, that and topic support
+- Hari AIML adapter with normalization, wildcard/star, SRAI, random, predicates, condition, that/topic matching, bot properties, date/size/vocabulary, runtime learn/learnf, eval, input/response and session learning support
 
 ## Consolidated legacy activities
 
@@ -28,24 +28,36 @@ The following legacy activities are intentionally absorbed into shared modern sc
 - `MainCourageAvi*`, sports/magic video wrappers -> catalog based external video opening
 - school-level wrapper activities -> `SchoolMenuActivity`
 
-## Binary asset inventory
+## Legacy data and binary assets
 
-The original repository contains binary artwork and audio under:
+The original repository contains Hari AIML/config text plus binary artwork/audio under:
 
+- `app1/src/main/assets/Hari`
 - `app1/src/main/res/drawable*`
 - `app1/src/main/res/mipmap*`
 - `app1/src/main/res/raw/song1.mp3`
 
-Confirmed examples include `cha*.jpg`, `dial*.png`, `dogkeeping*.jpg`, English learning artwork, and `st_a0_001.png` style tracing assets. The current GitHub connector can inspect these entries but cannot write arbitrary PNG/JPG/MP3 bytes through the UTF-8 contents writer.
+Confirmed examples include `cha*.jpg`, `dial*.png`, `dogkeeping*.jpg`, English learning artwork, `st_a0_001.png` style tracing assets and `song1.mp3`.
 
-For exact visual/audio parity, run `tools/import_legacy_binary_assets.sh` from a checkout where `eunhyo` and `eunhyo2` are sibling directories, then review and commit the imported files locally. The modernized code does not require legacy external-storage paths.
+Exact import helpers are provided:
 
-## Remaining verification gates
+- `tools/import_legacy_text_assets.sh`
+- `tools/import_legacy_binary_assets.sh`
+- `tools/verify_legacy_asset_parity.sh`
 
-1. Import exact binary artwork/audio where exact legacy visuals are required.
-2. Finish the remaining large Hari AIML source-file parity check.
-3. Compare the legacy manifest/activity inventory against this document and mark every item as migrated, consolidated, obsolete, or asset-only.
-4. Run `./gradlew clean testDebugUnitTest lintDebug assembleDebug`.
-5. Open and perform a clean build in Android Studio Meerkat | 2024.3.1 and perform emulator/device smoke tests.
+The parity verifier compares imported AIML/config and supported PNG/JPG/WebP/MP3 resources byte-for-byte with the original checkout.
+
+## Automated verification
+
+GitHub Actions now runs two independent build paths:
+
+1. Modern source-only build: `clean + testDebugUnitTest + lintDebug + assembleDebug`.
+2. Legacy parity build: checks out `sofajohnlee/eunhyo` read-only into a separate directory, imports exact Hari and binary resources, verifies byte-for-byte parity, then runs the same full Gradle verification.
+
+This means the original `sofajohnlee/eunhyo` repository remains unchanged while `eunhyo2` is continuously tested both independently and with the original data/assets present.
+
+## Remaining final gate
+
+The remaining non-automatable acceptance gate is to open the repository in Android Studio Meerkat | 2024.3.1 and perform emulator/device smoke tests of the major user flows. CI provides the reproducible clean build, unit-test, lint and APK assembly gates.
 
 The original `sofajohnlee/eunhyo` repository must remain unchanged.
