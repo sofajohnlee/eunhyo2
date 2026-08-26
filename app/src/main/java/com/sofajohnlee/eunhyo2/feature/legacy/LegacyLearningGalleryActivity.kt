@@ -115,6 +115,20 @@ class LegacyLearningGalleryActivity : AppCompatActivity(), View.OnTouchListener 
 
         private val ITEMS = buildList {
             add(Item("수의 체계", "math_m12"))
+            add(Item("반려견 학습", "lt_prao"))
+            (1..7).forEach { number -> add(Item("자긍심 그림 ${number}", "pride${number}")) }
+
+            add(Item("마리", "marie"))
+            add(Item("마리 엄마", "marie_mam"))
+            add(Item("마리 신데렐라", "marie_cin"))
+            add(Item("마리 오로라", "marie_oro"))
+            add(Item("마리 공주", "marie_princess"))
+            add(Item("마리 백설공주", "marie_white"))
+            add(Item("마리 몬스터", "marie_mon"))
+            add(Item("프린세스 마리", "prn_marie"))
+            (1..3).forEach { number -> add(Item("눈 미끄럼틀 ${number}", "prn_slide${number}")) }
+            (1..3).forEach { number -> add(Item("눈사람 ${number}", "prn_snowman${number}")) }
+
             add(Item("영어 문장 따라쓰기 A0", "st_a0_001"))
             add(Item("영어 문장 따라쓰기 A1", "st_a1_001"))
             add(Item("영어 문장 따라쓰기 A2", "st_a2_001"))
