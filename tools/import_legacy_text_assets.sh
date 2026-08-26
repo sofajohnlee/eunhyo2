@@ -4,8 +4,8 @@ set -euo pipefail
 # Usage:
 #   ./tools/import_legacy_text_assets.sh ../eunhyo
 #
-# Copies the original Hari AIML/config text assets and extracts the embedded
-# Hanja arrays from a local checkout of sofajohnlee/eunhyo without modifying it.
+# Copies the original Hari AIML/config text assets and extracts embedded
+# Hanja/phonics data from a local checkout of sofajohnlee/eunhyo without modifying it.
 
 SOURCE_ROOT="${1:-../eunhyo}"
 SOURCE_HARI="$SOURCE_ROOT/app1/src/main/assets/Hari"
@@ -31,6 +31,7 @@ done
 echo "Hari text assets copied from $SOURCE_HARI to $TARGET_HARI"
 
 python3 tools/extract_legacy_hanja.py "$SOURCE_ROOT"
+python3 tools/extract_legacy_phonics.py "$SOURCE_ROOT"
 
 echo "Legacy text/data import complete"
-echo "Review with: git diff -- app/src/main/assets/Hari app/src/main/assets/hanja"
+echo "Review with: git diff -- app/src/main/assets/Hari app/src/main/assets/hanja app/src/main/assets/legacy_phonics.csv"
