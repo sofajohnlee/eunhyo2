@@ -52,9 +52,12 @@ object EducationLinkCatalog {
         EducationLink("피타고라스 문제풀이", "https://www.khanacademy.org/math/basic-geo/basic-geometry-pythagorean-theorem/modal/e/pythagorean_theorem_1", "기하 문제풀이"),
         EducationLink("삼각비 문제풀이", "https://www.khanacademy.org/math/geometry/hs-geo-trig/modal/e/law-of-sines-and-cosines-word-problems", "기하 문제풀이"),
 
-        // Legacy MainEngM10/MainEngM11 grammar entry points.
-        EducationLink("영문법: 명사", "https://www.khanacademy.org/humanities/grammar/parts-of-speech-the-noun/", "영어"),
-        EducationLink("영문법: 대명사", "https://www.khanacademy.org/humanities/grammar/parts-of-speech-the-pronoun/", "영어"),
+        // Legacy MainEngM10/M11/M20/M21/M40/M41 grammar entry points.
+        EducationLink("영문법: 명사", "https://www.khanacademy.org/humanities/grammar/parts-of-speech-the-noun/", "영어 문법"),
+        EducationLink("영문법: 대명사", "https://www.khanacademy.org/humanities/grammar/parts-of-speech-the-pronoun/", "영어 문법"),
+        EducationLink("영문법: 동사·시제·조동사", "https://www.khanacademy.org/humanities/grammar/parts-of-speech-the-verb/", "영어 문법"),
+        EducationLink("영문법: 형용사·부사·관사", "https://www.khanacademy.org/humanities/grammar/parts-of-speech-the-modifier/", "영어 문법"),
+        EducationLink("영문법: 전치사·접속사", "https://www.khanacademy.org/humanities/grammar/parts-of-speech-the-preposition-and-the-conjunction/", "영어 문법"),
 
         // Legacy MainKanMathElGeo elementary measurement/geometry entry points.
         EducationLink("초등 길이 문제", "https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-measurement-data/quiz/cc-2nd-length-word-problems-quiz", "초등 수학"),
