@@ -64,5 +64,5 @@ object EducationLinkCatalog {
         EducationLink("초등 그래프", "https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-measurement-data/quiz/cc-2nd-line-plots-quiz", "초등 수학"),
         EducationLink("초등 시계", "https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-measurement-data/cc-2nd-time", "초등 수학"),
         EducationLink("초등 도형", "https://www.khanacademy.org/math/cc-2nd-grade-math/cc-2nd-measurement-data/cc-2nd-shapes", "초등 수학"),
-    )
+    ) + LegacyGeometryLinkCatalog.links
 }
