@@ -5,7 +5,6 @@ import android.graphics.PointF
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sofajohnlee.eunhyo2.databinding.ActivityLegacyLearningGalleryBinding
 import kotlin.math.sqrt
@@ -114,14 +113,17 @@ class LegacyLearningGalleryActivity : AppCompatActivity(), View.OnTouchListener 
         private const val DRAG = 1
         private const val ZOOM = 2
 
-        private val ITEMS = listOf(
-            Item("수의 체계", "math_m12"),
-            Item("영어 문장 따라쓰기 A0", "st_a0_001"),
-            Item("영어 문장 따라쓰기 A1", "st_a1_001"),
-            Item("영어 문장 따라쓰기 A2", "st_a2_001"),
-            Item("영어 문장 따라쓰기 B1", "st_b1_001"),
-            Item("영어 문장 따라쓰기 B2", "st_b2_001"),
-            Item("영어 문장 따라쓰기 C1", "st_c1_001"),
-        )
+        private val ITEMS = buildList {
+            add(Item("수의 체계", "math_m12"))
+            add(Item("영어 문장 따라쓰기 A0", "st_a0_001"))
+            add(Item("영어 문장 따라쓰기 A1", "st_a1_001"))
+            add(Item("영어 문장 따라쓰기 A2", "st_a2_001"))
+            add(Item("영어 문장 따라쓰기 B1", "st_b1_001"))
+            add(Item("영어 문장 따라쓰기 B2", "st_b2_001"))
+            add(Item("영어 문장 따라쓰기 C1", "st_c1_001"))
+            (1..27).forEach { number ->
+                add(Item("영어 그림 학습 ${number}", "eengv${number}"))
+            }
+        }
     }
 }
