@@ -17,6 +17,7 @@
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonKoreanPronunciation" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="표준발음법" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonKoreanBook" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="국어 책" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonEnglish" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="영어" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonEnglishWord" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="영어 단어 따라쓰기" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonEnglishSentence" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="영어 문장 CSV" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonTyping" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="한글·영문 타자연습" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonMath" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="수학" />
