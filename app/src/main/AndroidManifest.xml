@@ -8,6 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eunhyo2">
 
+        <activity android:name=".feature.english.PhonicsColorActivity" android:exported="false" />
         <activity android:name=".feature.english.AlphabetTraceActivity" android:exported="false" />
         <activity android:name=".feature.math.MathProgressActivity" android:exported="false" />
         <activity android:name=".feature.legacy.LegacySlideshowActivity" android:exported="false" />
