@@ -24,3 +24,28 @@ jobs:
           gradle-version: '8.11.1'
       - name: Build, test and lint
         run: gradle --no-daemon clean testDebugUnitTest lintDebug assembleDebug
+
+  legacy-parity-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout modern project
+        uses: actions/checkout@v4
+      - name: Checkout original eunhyo without modifying it
+        uses: actions/checkout@v4
+        with:
+          repository: sofajohnlee/eunhyo
+          path: legacy-eunhyo
+      - name: Import exact legacy text assets
+        run: bash tools/import_legacy_text_assets.sh legacy-eunhyo
+      - name: Import exact legacy binary assets
+        run: bash tools/import_legacy_binary_assets.sh legacy-eunhyo/app1/src/main/res app/src/main/res
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - name: Build, test and lint with legacy assets
+        run: gradle --no-daemon clean testDebugUnitTest lintDebug assembleDebug
