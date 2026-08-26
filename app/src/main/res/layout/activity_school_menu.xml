@@ -11,6 +11,7 @@
 
         <TextView android:id="@+id/textSchoolLevel" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonKorean" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="국어·한글" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/buttonMultilingualPicture" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="한·영·불 그림 학습" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonKoreanPhrase" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="국어 문장" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonKoreanIdiom" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="속담·관용어" />
         <com.google.android.material.button.MaterialButton android:id="@+id/buttonKoreanSpelling" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="한글 맞춤법" />
