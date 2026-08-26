@@ -39,6 +39,8 @@ jobs:
         run: bash tools/import_legacy_text_assets.sh legacy-eunhyo
       - name: Import exact legacy binary assets
         run: bash tools/import_legacy_binary_assets.sh legacy-eunhyo/app1/src/main/res app/src/main/res
+      - name: Verify exact legacy asset parity
+        run: bash tools/verify_legacy_asset_parity.sh legacy-eunhyo app/src/main
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
