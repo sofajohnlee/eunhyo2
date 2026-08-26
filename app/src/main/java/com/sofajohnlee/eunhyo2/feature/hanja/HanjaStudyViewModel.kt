@@ -20,11 +20,20 @@ class HanjaStudyViewModel(application: Application) : AndroidViewModel(applicati
     private val repository = HanjaRepository()
     private val store = HanjaDataStore(application)
     private val saved = store.load()
+    private val legacyEmbedded = if (saved.isEmpty()) loadLegacyEmbedded(application) else emptyList()
+    private val initialEntries = when {
+        saved.isNotEmpty() -> saved
+        legacyEmbedded.isNotEmpty() -> legacyEmbedded
+        else -> repository.builtIn()
+    }
+    private val initialLabel = when {
+        saved.isNotEmpty() -> "가져온 데이터 ${saved.size}자"
+        legacyEmbedded.isNotEmpty() -> "원본 내장 한자 ${legacyEmbedded.size}자"
+        else -> "기본 데이터"
+    }
+
     private val _uiState = MutableStateFlow(
-        UiState(
-            entries = saved.ifEmpty(repository::builtIn),
-            sourceLabel = if (saved.isEmpty()) "기본 데이터" else "가져온 데이터 ${saved.size}자",
-        ),
+        UiState(entries = initialEntries, sourceLabel = initialLabel),
     )
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
@@ -48,6 +57,20 @@ class HanjaStudyViewModel(application: Application) : AndroidViewModel(applicati
 
     fun restoreBuiltIn() {
         store.clear()
-        _uiState.value = UiState(entries = repository.builtIn(), sourceLabel = "기본 데이터")
+        val application = getApplication<Application>()
+        val legacy = loadLegacyEmbedded(application)
+        _uiState.value = if (legacy.isNotEmpty()) {
+            UiState(entries = legacy, sourceLabel = "원본 내장 한자 ${legacy.size}자")
+        } else {
+            UiState(entries = repository.builtIn(), sourceLabel = "기본 데이터")
+        }
+    }
+
+    private fun loadLegacyEmbedded(application: Application): List<HanjaEntry> = runCatching {
+        application.assets.open(LEGACY_ASSET_PATH).use(repository::parseCsv)
+    }.getOrDefault(emptyList())
+
+    companion object {
+        private const val LEGACY_ASSET_PATH = "hanja/legacy_embedded.csv"
     }
 }
