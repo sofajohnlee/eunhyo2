@@ -8,6 +8,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eunhyo2">
 
+        <activity android:name=".feature.math.MathProgressActivity" android:exported="false" />
+        <activity android:name=".feature.legacy.LegacySlideshowActivity" android:exported="false" />
         <activity android:name=".feature.notebook.StudyMailActivity" android:exported="false" />
         <activity android:name=".feature.legacy.LegacyLearningGalleryActivity" android:exported="false" />
         <activity android:name=".feature.media.KoreanSongActivity" android:exported="false" />
